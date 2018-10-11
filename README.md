@@ -1,22 +1,9 @@
-# SimpleTraining1Web
+# AAXON
 
 ## Required
-1) Need install MySql database. schema name="test", username="root", password="123abcABC"
-2) This program need 8080,8081,8082 ports
+1) Need install MySql database. schema name="test", username="root", password="password"
+2) This program need 8090,8081,8082 ports
 3) JDK8
-
-## DB installtion
-### Windows
-        In windows, we suggest use free installation version Mysql. 
-        1) download the both files in \\172.17.3.100\Training\Microservice\Phase1-JavaBase\Examing and unzip in your local
-        2) edit POC.txt in MySQLData. change "basedir" & "datadir" base on your path
-        3) add "mysql-5.7.20-winx64\bin" into your system env path.
-        
-        The "test" schema default password is "123abcABC" 
-        
-### Linux
-        In Linux, we have to install mysql or use mysql docker. and set the "test" schema password to "123abcABC".
-        
 
 ## How to running
 ### Run price service module

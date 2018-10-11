@@ -1,7 +1,7 @@
 # SimpleTraining1PriceService
 
 ## Required
-1) Need install MySql database. and schema name is "test", db username is "root". password is "root"
+1) Need install MySql database. and schema name is "test", db username is "root". password is "password"
 2) This program need 8081 port
 
 ## How to running
