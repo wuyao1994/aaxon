@@ -10,7 +10,7 @@
     <title>index</title>
 </head>
 <body>
-Username: ${user.username} <br/>
+Username: ${account.username} <br/>
 <a href="/logout">Logout</a> &nbsp;
 <a href="/regist">Regist</a> &nbsp;
 <a href="/login">SignIn</a> &nbsp;

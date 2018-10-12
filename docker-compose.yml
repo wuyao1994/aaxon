@@ -33,8 +33,8 @@ redis:
   image: redis:3.0
   ports:
    - 6379:6379
-user-service:
-  image: kbastani/user-service
+account-service:
+  image: kbastani/account-service
   ports:
    - 8181:8181
   links:
@@ -56,7 +56,7 @@ edge-service:
   ports:
    - 9999:9999
   links:
-   - user-service
+   - account-service
    - discovery-service
    - config-service
   environment:
@@ -65,7 +65,7 @@ edge-service:
 account-service:
   image: kbastani/account-service
   links:
-   - user-service
+   - account-service
    - discovery-service
    - config-service
    - mysql
@@ -87,7 +87,7 @@ order-service:
    - mongo
    - discovery-service
    - config-service
-   - user-service
+   - account-service
   environment:
    - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
@@ -107,7 +107,7 @@ shopping-cart-service:
    - mysql
    - discovery-service
    - config-service
-   - user-service
+   - account-service
   environment:
    - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
@@ -118,7 +118,7 @@ online-store-web:
   links:
    - discovery-service
    - config-service
-   - user-service
+   - account-service
    - edge-service
   environment:
    - SPRING_PROFILES_ACTIVE=docker
