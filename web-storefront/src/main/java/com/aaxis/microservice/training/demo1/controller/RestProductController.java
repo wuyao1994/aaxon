@@ -26,6 +26,7 @@ public class RestProductController {
             @RequestParam(value = "page", required = false) Integer page,
             @RequestParam(value = "sortName", required = false) String sortName,
             @RequestParam(value = "sortValue", required = false) String sortValue) {
+        LOGGER.info("rest search product by id:{}", productId);
         page = page == null ? 1 : page;
         Page<Product> pageProducts = mProductService.searchProducts(page, productId, name, sortName, sortValue);
         ProductResult productResult = new ProductResult();

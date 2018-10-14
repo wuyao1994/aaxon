@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@PreAuthorize("hasRole('USER')")
 @RequestMapping("/product")
 public class ProductController {
     private final static Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
@@ -30,18 +29,19 @@ public class ProductController {
     }
 
 
-
+    @PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
     @GetMapping("/searchPage")
     public String loadsSearchPage() {
         return "/search_page";
     }
 
 
-
+    @PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
     @GetMapping("/search")
     public String search(HttpServletRequest request) {
         String productId = request.getParameter("productId");
         String name = request.getParameter("name");
+        LOGGER.info("search product by product id:{}", productId);
         int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
         String sortName = request.getParameter("sortName");
         String sortValue = request.getParameter("sortValue");

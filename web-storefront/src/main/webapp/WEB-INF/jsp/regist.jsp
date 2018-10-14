@@ -17,6 +17,10 @@ ${errorMessage}
         <br/>
         password: <input type="password" name="password">
         <br>
+        role:<select>
+            <option name="role" value="USER">USER</option>
+            <option name="role" value="ADMIN">ADMIN</option>
+        </select>
         <input type="submit" value="submit"/>
     </form>
 </body>

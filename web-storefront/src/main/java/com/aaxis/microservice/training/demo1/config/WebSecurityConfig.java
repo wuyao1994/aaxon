@@ -1,9 +1,10 @@
 package com.aaxis.microservice.training.demo1.config;
 
-import com.aaxis.microservice.training.demo1.service.UserService;
+import com.aaxis.microservice.training.demo1.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,9 +13,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
 
 
@@ -22,14 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/regist")
-                .permitAll()
-//                .antMatchers("/rest", "/rest/**").hasAnyRole("USER")
-//                .anyRequest()
-//                .authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/index", true)
                 .loginPage("/login")
                 .permitAll()
                 .and()

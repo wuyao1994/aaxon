@@ -6,6 +6,7 @@ import com.aaxis.microservice.training.demo1.util.SpringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,27 +24,23 @@ public class UserController {
 
     @RequestMapping("/doLogin")
     public String login(@ModelAttribute Account pAccount, HttpServletRequest request) {
+        LOGGER.info("login by username:{}", pAccount.getUsername());
         Account account = ((RestUserController) SpringUtil.getBean("restUserController")).login(pAccount);
         if (account == null) {
             request.setAttribute("errorMessage", "Login error");
             return "forward:/login";
         }
-        request.getSession().setAttribute("user", account);
         return "redirect:/index";
     }
 
 
-
-    @RequestMapping("/logout")
-    public String logout(HttpServletRequest request) {
-
-        request.getSession().removeAttribute("user");
-
-        return "redirect:/login";
+    @PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
+    @RequestMapping("/")
+    public String home() {
+        return "index";
     }
 
-
-
+    @PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
     @RequestMapping("/index")
     public String index() {
         return "index";
