@@ -3,7 +3,10 @@ package com.aaxis.microservice.training.demo1.service.impl;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
@@ -18,7 +21,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.querydsl.QSort;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -111,17 +113,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Page<Product> findProductsInPLP(String categoryId, int page, String sortName, String sortValue) {
 		long startTime = System.currentTimeMillis();
-		Specification<Product> spec = new Specification<Product>() {
-			@Nullable
-			@Override
-			public Predicate toPredicate(Root<Product> pRoot, CriteriaQuery<?> pCriteriaQuery,
-					CriteriaBuilder pCriteriaBuilder) {
-				Path<Category> name = pRoot.get("category");
-				Predicate p = pCriteriaBuilder.equal(name.as(Category.class), mCategoryDao.findById(categoryId).get());
-				return p;
-			}
+		Specification<Product> spec = (Root<Product> pRoot, CriteriaQuery<?> pCriteriaQuery,
+				CriteriaBuilder pCriteriaBuilder) -> {
+			return pCriteriaBuilder.equal(pRoot.get("category").as(Category.class),
+					mCategoryDao.findById(categoryId).get());
 		};
-
 		Pageable pageable = null;
 
 		if (sortName != null) {
@@ -135,7 +131,7 @@ public class ProductServiceImpl implements ProductService {
 		Page<Product> pageResult = mProductDao.findAll(spec, pageable);
 		addPriceAndInventory(pageResult.getContent());
 		long cost = System.currentTimeMillis() - startTime;
-		System.out.println("COST_TIME:" + cost);
+		LOGGER.info("COST_TIME:{}", cost);
 		return pageResult;
 	}
 
@@ -144,19 +140,43 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Page<Product> searchProducts(int page, String productId, String name, String sortName, String sortValue) {
 
-		// implemente this method.
+		long startTime = System.currentTimeMillis();
+		Specification<Product> spec = (Root<Product> pRoot, CriteriaQuery<?> pCriteriaQuery,
+				CriteriaBuilder pCriteriaBuilder) -> {
+			List<Predicate> predicates = new ArrayList<>();
+			if (productId != null) {
+				predicates.add(pCriteriaBuilder.equal(pRoot.get("id"), productId));
+			}
+			if (name != null) {
+				predicates.add(pCriteriaBuilder.equal(pRoot.get("name"), name));
+			}
+			return pCriteriaBuilder.or(predicates.toArray(new Predicate[predicates.size()]));
+		};
+		Pageable pageable = null;
 
-		return null;
+		if (sortName != null) {
+			Sort sort = new Sort("ASC".equalsIgnoreCase(sortValue) ? QSort.Direction.ASC : QSort.Direction.DESC,
+					sortName);
+			pageable = new PageRequest(page - 1, 20, sort);
+		} else {
+			pageable = new PageRequest(page - 1, 20);
+		}
+
+		Page<Product> pageResult = mProductDao.findAll(spec, pageable);
+		addPriceAndInventory(pageResult.getContent());
+		long cost = System.currentTimeMillis() - startTime;
+		LOGGER.info("COST_TIME:{}", cost);
+		return pageResult;
 	}
 
 
 
 	@Override
 	public void addPriceAndInventory(List<Product> products) {
-		for (Product product : products) {
+		products.forEach(product -> {
 			product.setPrice(getProductPrice(product.getId()));
 			product.setStock(getProductInventory(product.getId()));
-		}
+		});
 	}
 
 
@@ -167,7 +187,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
-    @Override
+
+	@Override
 	public double getProductPrice(String pProductId) {
 		Double price = (Double) ((Map) restTemplate.getForObject("http://localhost:8081/price/" + pProductId,
 				Map.class)).get("price");
@@ -175,7 +196,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
-    @Override
+
+	@Override
 	public int getProductInventory(String pProductId) {
 		Integer stock = (Integer) ((Map) restTemplate.getForObject("http://localhost:8082/inventory/" + pProductId,
 				Map.class)).get("stock");
