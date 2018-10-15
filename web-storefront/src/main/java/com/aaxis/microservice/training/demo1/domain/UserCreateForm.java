@@ -4,7 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class UserCreateForm {
-	@NotEmpty(message = "email is empty")
+	@NotEmpty(message = "username is empty")
 	private String	username;
 	@NotEmpty(message = "password is empty")
 	private String	password;

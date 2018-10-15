@@ -29,14 +29,14 @@ public class ProductController {
     }
 
 
-    @PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
     @GetMapping("/searchPage")
     public String loadsSearchPage() {
         return "/search_page";
     }
 
 
-    @PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
     @GetMapping("/search")
     public String search(HttpServletRequest request) {
         String productId = request.getParameter("productId");

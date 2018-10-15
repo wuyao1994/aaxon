@@ -167,7 +167,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
-
+    @Override
 	public double getProductPrice(String pProductId) {
 		Double price = (Double) ((Map) restTemplate.getForObject("http://localhost:8081/price/" + pProductId,
 				Map.class)).get("price");
@@ -175,7 +175,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
-
+    @Override
 	public int getProductInventory(String pProductId) {
 		Integer stock = (Integer) ((Map) restTemplate.getForObject("http://localhost:8082/inventory/" + pProductId,
 				Map.class)).get("stock");

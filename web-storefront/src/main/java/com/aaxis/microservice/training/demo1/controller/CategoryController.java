@@ -37,7 +37,7 @@ public class CategoryController {
 
 
 
-	@PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
 	@GetMapping(value = { "/{categoryId}/{page}/{sortName}/{sortValue}", "/{categoryId}/{page}" })
 	public String findProductsByCategory(@PathVariable("categoryId") String categoryId,
 			@PathVariable(name = "page", required = false) String page,

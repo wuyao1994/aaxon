@@ -1,48 +1,58 @@
 package com.aaxis.microservice.training.demo1.controller;
 
 import com.aaxis.microservice.training.demo1.domain.Account;
+import com.aaxis.microservice.training.demo1.domain.Category;
+import com.aaxis.microservice.training.demo1.domain.UserCreateForm;
+import com.aaxis.microservice.training.demo1.service.CategoryService;
 import com.aaxis.microservice.training.demo1.service.UserService;
-import com.aaxis.microservice.training.demo1.util.SpringUtil;
+import com.aaxis.microservice.training.demo1.validator.AccountRegisterFormValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class UserController {
     private final static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
     @Autowired
-    private UserService pUserService;
+    private UserService                  pUserService;
+    @Autowired
+    private CategoryService              mCategoryService;
+    @Autowired
+    private AccountRegisterFormValidator mAccountRegisterFormValidator;
 
 
 
-    @RequestMapping("/doLogin")
-    public String login(@ModelAttribute Account pAccount, HttpServletRequest request) {
-        LOGGER.info("login by username:{}", pAccount.getUsername());
-        Account account = ((RestUserController) SpringUtil.getBean("restUserController")).login(pAccount);
-        if (account == null) {
-            request.setAttribute("errorMessage", "Login error");
-            return "forward:/login";
-        }
-        return "redirect:/index";
+    @InitBinder("form")
+    public void initBinder(WebDataBinder binder) {
+        binder.addValidators(mAccountRegisterFormValidator);
     }
 
 
-    @PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
-    @RequestMapping("/")
-    public String home() {
+    @PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home(Model model) {
+        List<Category> allCategories = mCategoryService.findAllCategories();
+        model.addAttribute("allCategories", allCategories);
         return "index";
     }
 
-    @PreAuthorize("hasRole('USER') AND hasRole('ADMIN')")
+
+
+    @PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
     @RequestMapping("/index")
-    public String index() {
+    public String index(Model model) {
+        List<Category> allCategories = mCategoryService.findAllCategories();
+        model.addAttribute("allCategories", allCategories);
         return "index";
     }
 
@@ -63,17 +73,26 @@ public class UserController {
 
 
     @PostMapping("/doRegist")
-    public String doRegist(@ModelAttribute Account pAccount, HttpServletRequest request) {
-        // validation, TODO
+    public String doRegist(@Valid @ModelAttribute("form") UserCreateForm form, BindingResult bindingResult,
+            Model model, HttpServletRequest request) {
+        Account account = new Account();
+        if (bindingResult.hasErrors()) {
+            LOGGER.error("user validation falid");
+            model.addAttribute("Errors", bindingResult.getAllErrors());
+            return "regist";
+        }
 
         try {
-            Account u = ((RestUserController) SpringUtil.getBean("restUserController")).doRegist(pAccount);
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("errorMessage", e.getMessage());
-            return "forward:/regist";
+            account.setUsername(form.getUsername());
+            account.setPassword(form.getPassword());
+            account.setRole(form.getRole());
+            pUserService.regist(account);
+        } catch (RuntimeException e) {
+            bindingResult.reject("username.exists", "username already exists");
+            model.addAttribute("Errors", bindingResult.getAllErrors());
+            return "regist";
         }
-        request.getSession().setAttribute("user", pAccount);
+
         return "redirect:/index";
     }
 }
