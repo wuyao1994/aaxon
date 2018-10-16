@@ -2,11 +2,13 @@ package com.aaxis.microservice.training.demo1.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.aaxis.microservice.training.demo1.domain.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ import com.aaxis.microservice.training.demo1.domain.ProductResult;
 import com.aaxis.microservice.training.demo1.service.CategoryService;
 import com.aaxis.microservice.training.demo1.service.ProductService;
 import com.aaxis.microservice.training.demo1.util.SpringUtil;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/category")
@@ -42,11 +46,14 @@ public class CategoryController {
 	public String findProductsByCategory(@PathVariable("categoryId") String categoryId,
 			@PathVariable(name = "page", required = false) String page,
 			@PathVariable(name = "sortName", required = false) String sortName,
-			@PathVariable(name = "sortValue", required = false) String sortValue, HttpServletRequest request) {
-        LOGGER.info("find products by category id:{}", categoryId);
+			@PathVariable(name = "sortValue", required = false) String sortValue, HttpServletRequest request, Model model) {
+        LOGGER.info("find product by categoryId id:{} and sortValue:{} and sortName:{}",categoryId,sortValue, sortName);
 		ProductResult productResult = ((RestCategoryController) SpringUtil.getBean("restCategoryController"))
 				.restFindProductsByCategory(categoryId, page, sortName, sortValue);
+
 		request.setAttribute("productResult", productResult);
+        List<Category> allCategories = mCategoryService.findAllCategories();
+        model.addAttribute("allCategories", allCategories);
 		return "/category";
 	}
 
