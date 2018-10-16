@@ -1,4 +1,4 @@
-package com.aaxis.microservice.training.demo1.config.config;
+package com.aaxis.microservice.training.demo1.config;
 
 import java.lang.reflect.Method;
 

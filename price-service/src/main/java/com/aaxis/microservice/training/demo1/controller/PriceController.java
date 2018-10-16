@@ -27,7 +27,7 @@ public class PriceController {
 	}
 
 
-	@Cacheable("#productId")
+	@Cacheable(value = "price", key = "#productId")
 	@GetMapping("/{productId}")
 	public ItemPrice findPrice(@PathVariable("productId") String productId) {
 		LOGGER.info("find price by product id:{}", productId);

@@ -1,4 +1,4 @@
-package com.aaxis.microservice.training.demo1.config.config;
+package com.aaxis.microservice.training.demo1.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

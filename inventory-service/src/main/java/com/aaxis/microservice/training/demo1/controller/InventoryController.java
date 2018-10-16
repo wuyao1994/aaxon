@@ -27,7 +27,7 @@ public class InventoryController {
 	}
 
 
-	@Cacheable("#productId")
+	@Cacheable(value = "category", key = "#productId")
 	@GetMapping("/{productId}")
 	public Inventory findPrice(@PathVariable("productId") String productId) {
 		LOGGER.info("find inventory by product id:{}", productId);
