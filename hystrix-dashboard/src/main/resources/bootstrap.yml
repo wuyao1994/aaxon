@@ -1,0 +1,12 @@
+server:
+  port: 6161
+spring:
+  application:
+    name: hystrix-dashboard
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://${DOCKER_IP}:8888

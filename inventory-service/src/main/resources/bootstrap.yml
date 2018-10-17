@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: inventory-service
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://${DOCKER_IP}:8888

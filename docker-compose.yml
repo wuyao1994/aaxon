@@ -1,12 +1,32 @@
+zookeeper1:
+    image: wurstmeister/zookeeper
+    ports:
+     - "2181:2181"
+    environment:
+     - KAFKA_ADVERTISED_HOST_NAME=zookeeper1
+    extra_hosts:
+      zookeeper1: $ZOOKEEPER_IP
+  kafka1:
+    image: wurstmeister/kafka:2.11-1.1.0
+    ports:
+     - "9092:9092"
+    environment:
+     - KAFKA_ADVERTISED_PORT=9092
+     - KAFKA_ADVERTISED_HOST_NAME=zookeeper1
+     - KAFKA_ZOOKEEPER_CONNECT=zookeeper1:2181
+    extra_hosts:
+      zookeeper1: $ZOOKEEPER_IP
+    depends_on:
+     - zookeeper1
 config-service:
-  image: kbastani/config-service
+  image: microservice/config-service
   environment:
    - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
   ports:
    - 8888:8888
 hystrix-dashboard:
-  image: kbastani/hystrix-dashboard
+  image: microservice/hystrix-dashboard
   environment:
    - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
@@ -19,80 +39,21 @@ mysql:
   environment:
    - MYSQL_ROOT_PASSWORD=dbpass
    - MYSQL_DATABASE=dev
-neo4j:
-  image: neo4j:2.3
-  ports:
-   - 7474:7474
-  environment:
-   - NEO4J_AUTH=none
-mongo:
-  image: mongo:3.3
-  ports:
-   - 27017:27017
 redis:
   image: redis:3.0
   ports:
    - 6379:6379
-account-service:
-  image: kbastani/account-service
-  ports:
-   - 8181:8181
-  links:
-   - mysql
-   - discovery-service
-   - config-service
-  environment:
-   - SPRING_PROFILES_ACTIVE=docker
-   - DOCKER_IP=$DOCKER_IP
 discovery-service:
-  image: kbastani/discovery-service
+  image: microservice/discovery-service
   ports:
    - 8761:8761
   environment:
    - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
-edge-service:
-  image: kbastani/edge-service
-  ports:
-   - 9999:9999
-  links:
-   - account-service
-   - discovery-service
-   - config-service
-  environment:
-   - SPRING_PROFILES_ACTIVE=docker
-   - DOCKER_IP=$DOCKER_IP
-account-service:
-  image: kbastani/account-service
-  links:
-   - account-service
-   - discovery-service
-   - config-service
-   - mysql
-  environment:
-   - SPRING_PROFILES_ACTIVE=docker
-   - DOCKER_IP=$DOCKER_IP
 inventory-service:
-  image: kbastani/inventory-service
-  links:
-   - neo4j
-   - discovery-service
-   - config-service
-  environment:
-   - SPRING_PROFILES_ACTIVE=docker
-   - DOCKER_IP=$DOCKER_IP
-order-service:
-  image: kbastani/order-service
-  links:
-   - mongo
-   - discovery-service
-   - config-service
-   - account-service
-  environment:
-   - SPRING_PROFILES_ACTIVE=docker
-   - DOCKER_IP=$DOCKER_IP
-catalog-service:
-  image: kbastani/catalog-service
+  image: microservice/inventory-service
+  ports:
+     - 8082:8082
   links:
    - redis
    - mysql
@@ -101,25 +62,39 @@ catalog-service:
   environment:
    - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
-shopping-cart-service:
-  image: kbastani/shopping-cart-service
+catalog-service:
+  image: microservice/catalog-service
+  ports:
+     - 8083:8083
   links:
+   - redis
    - mysql
    - discovery-service
    - config-service
-   - account-service
   environment:
    - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
-online-store-web:
-  image: kbastani/online-store-web
+price-service:
+  image: microservice/price-service
   ports:
-   - 8787:8787
+     - 8081:8081
   links:
+   - redis
+   - mysql
    - discovery-service
    - config-service
-   - account-service
-   - edge-service
+  environment:
+   - SPRING_PROFILES_ACTIVE=docker
+   - DOCKER_IP=$DOCKER_IP
+web-storefront:
+  image: microservice/web-storefront
+  ports:
+     - 8090:90
+  links:
+   - redis
+   - mysql
+   - discovery-service
+   - config-service
   environment:
    - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP

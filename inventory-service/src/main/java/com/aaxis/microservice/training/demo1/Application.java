@@ -1,14 +1,17 @@
 package com.aaxis.microservice.training.demo1;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.client.SpringCloudApplication;
 
-@SpringBootApplication
+/**
+ * @author elvis
+ */
+@SpringCloudApplication
 @EnableCaching
-public class PriceSerivceApplication {
+public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(PriceSerivceApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }

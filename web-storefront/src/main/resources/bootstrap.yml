@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: web-storefront
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://${DOCKER_IP}:8888

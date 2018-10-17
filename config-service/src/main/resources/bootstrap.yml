@@ -1,0 +1,21 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wuyao1994/aaxon.git
+          search-paths: config-service/configurations
+          username:
+          password:
+          skip-ssl-validation: true
+          clone-on-start: true
+          force-pull: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh,info,health
