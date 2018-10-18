@@ -181,7 +181,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @HystrixCommand(fallbackMethod = "")
     public double getProductPrice(String pProductId) {
-        Double price = (Double) ((Map) restTemplate.getForObject("http://localhost:8081/price/" + pProductId,
+        Double price = (Double) ((Map) restTemplate.getForObject("http://price-service/price/" + pProductId,
                 Map.class)).get("price");
         return price;
     }
@@ -191,7 +191,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @HystrixCommand(fallbackMethod = "")
     public int getProductInventory(String pProductId) {
-        Integer stock = (Integer) ((Map) restTemplate.getForObject("http://localhost:8082/inventory/" + pProductId,
+        Integer stock = (Integer) ((Map) restTemplate.getForObject("http://inventory-service/inventory/" + pProductId,
                 Map.class)).get("stock");
         return stock;
     }
