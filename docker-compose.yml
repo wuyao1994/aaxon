@@ -1,34 +1,32 @@
-zookeeper1:
+zookeeper:
     image: wurstmeister/zookeeper
     ports:
      - "2181:2181"
     environment:
-     - KAFKA_ADVERTISED_HOST_NAME=zookeeper1
+     - KAFKA_ADVERTISED_HOST_NAME=zookeeper
     extra_hosts:
-      zookeeper1: $ZOOKEEPER_IP
+      zookeeper: $ZOOKEEPER_IP
   kafka1:
     image: wurstmeister/kafka:2.11-1.1.0
     ports:
      - "9092:9092"
     environment:
      - KAFKA_ADVERTISED_PORT=9092
-     - KAFKA_ADVERTISED_HOST_NAME=zookeeper1
+     - KAFKA_ADVERTISED_HOST_NAME=zookeeper
      - KAFKA_ZOOKEEPER_CONNECT=zookeeper1:2181
     extra_hosts:
-      zookeeper1: $ZOOKEEPER_IP
+      zookeeper: $ZOOKEEPER_IP
     depends_on:
-     - zookeeper1
+     - zookeeper
 config-service:
   image: microservice/config-service
   environment:
-   - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
   ports:
    - 8888:8888
 hystrix-dashboard:
   image: microservice/hystrix-dashboard
   environment:
-   - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
   ports:
    - 6161:6161
@@ -37,8 +35,8 @@ mysql:
   ports:
    - 3306:3306
   environment:
-   - MYSQL_ROOT_PASSWORD=dbpass
-   - MYSQL_DATABASE=dev
+   - MYSQL_ROOT_PASSWORD=passowrd
+   - MYSQL_DATABASE=microservice
 redis:
   image: redis:3.0
   ports:
@@ -48,7 +46,6 @@ discovery-service:
   ports:
    - 8761:8761
   environment:
-   - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
 inventory-service:
   image: microservice/inventory-service
@@ -60,19 +57,6 @@ inventory-service:
    - discovery-service
    - config-service
   environment:
-   - SPRING_PROFILES_ACTIVE=docker
-   - DOCKER_IP=$DOCKER_IP
-catalog-service:
-  image: microservice/catalog-service
-  ports:
-     - 8083:8083
-  links:
-   - redis
-   - mysql
-   - discovery-service
-   - config-service
-  environment:
-   - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
 price-service:
   image: microservice/price-service
@@ -84,7 +68,6 @@ price-service:
    - discovery-service
    - config-service
   environment:
-   - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP
 web-storefront:
   image: microservice/web-storefront
@@ -96,5 +79,4 @@ web-storefront:
    - discovery-service
    - config-service
   environment:
-   - SPRING_PROFILES_ACTIVE=docker
    - DOCKER_IP=$DOCKER_IP

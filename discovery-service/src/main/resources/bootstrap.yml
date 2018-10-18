@@ -3,10 +3,6 @@ server:
 spring:
   application:
     name: discovery-service
-
----
-spring:
-  profiles: docker
   cloud:
     config:
       uri: http://${DOCKER_IP}:8888

@@ -7,7 +7,7 @@ mvn clean install -Dmaven.test.skip=true
 
 # Export the active docker machine IP
 export DOCKER_IP=$(docker-machine ip $(docker-machine active))
-
+export ZOOKEEPER_IP=172.17.118.141
 # docker-machine doesn't exist in Linux, assign default ip if it's not set
 DOCKER_IP=${DOCKER_IP:-0.0.0.0}
 

@@ -1,11 +1,13 @@
 package com.aaxis.microservice.training.demo1.service.impl;
 
-import com.aaxis.microservice.training.demo1.dao.CategoryDao;
-import com.aaxis.microservice.training.demo1.dao.ProductDao;
-import com.aaxis.microservice.training.demo1.domain.Category;
-import com.aaxis.microservice.training.demo1.domain.Product;
-import com.aaxis.microservice.training.demo1.service.ProductService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +24,12 @@ import org.springframework.data.querydsl.QSort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import com.aaxis.microservice.training.demo1.dao.CategoryDao;
+import com.aaxis.microservice.training.demo1.dao.ProductDao;
+import com.aaxis.microservice.training.demo1.domain.Category;
+import com.aaxis.microservice.training.demo1.domain.Product;
+import com.aaxis.microservice.training.demo1.service.ProductService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -37,9 +39,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductDao mProductDao;
-
-    @Autowired
-    private RestTemplateBuilder mRestTemplateBuilder;
 
     @Autowired
     private Environment env;
@@ -177,14 +176,6 @@ public class ProductServiceImpl implements ProductService {
             product.setStock(getProductInventory(product.getId()));
         });
     }
-
-
-
-    @Bean
-    public RestTemplate restTemplate() {
-        return mRestTemplateBuilder.build();
-    }
-
 
 
     @Override
