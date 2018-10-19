@@ -1,15 +1,14 @@
 package com.aaxis.microservice.training.demo1.service.impl;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.aaxis.microservice.training.demo1.dao.InventoryDAO;
 import com.aaxis.microservice.training.demo1.domain.Inventory;
 import com.aaxis.microservice.training.demo1.service.InventoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.Optional;
+
+@Service
 public class InventoryServiceImpl implements InventoryService {
 
 	@Autowired

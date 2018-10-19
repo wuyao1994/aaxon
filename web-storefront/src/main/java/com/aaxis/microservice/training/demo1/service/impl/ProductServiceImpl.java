@@ -1,19 +1,15 @@
 package com.aaxis.microservice.training.demo1.service.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
+import com.aaxis.microservice.training.demo1.dao.CategoryDao;
+import com.aaxis.microservice.training.demo1.dao.ProductDao;
+import com.aaxis.microservice.training.demo1.domain.Category;
+import com.aaxis.microservice.training.demo1.domain.Product;
+import com.aaxis.microservice.training.demo1.service.ProductService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,12 +20,12 @@ import org.springframework.data.querydsl.QSort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.aaxis.microservice.training.demo1.dao.CategoryDao;
-import com.aaxis.microservice.training.demo1.dao.ProductDao;
-import com.aaxis.microservice.training.demo1.domain.Category;
-import com.aaxis.microservice.training.demo1.domain.Product;
-import com.aaxis.microservice.training.demo1.service.ProductService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -176,6 +172,7 @@ public class ProductServiceImpl implements ProductService {
             product.setStock(getProductInventory(product.getId()));
         });
     }
+
 
 
     @Override

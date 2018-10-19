@@ -5,6 +5,8 @@ management:
         include: hystrix.stream,bus-refresh,info,health,routes
 spring:
   cloud:
+    refresh:
+      refreshable: none
     stream:
       kafka:
         binder:
