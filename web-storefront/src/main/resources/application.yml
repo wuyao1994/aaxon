@@ -2,10 +2,10 @@ server:
   port: 8090
 spring:
   datasource:
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://mysql:3306/microservice
     username: root
     password: password
-    driver-class-name: com.mysql.jdbc.Driver
     jpa:
       database: mysql
       show-sql: true
