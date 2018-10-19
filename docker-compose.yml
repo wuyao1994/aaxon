@@ -15,7 +15,7 @@ services:
     environment:
      - KAFKA_ADVERTISED_PORT=9092
      - KAFKA_ADVERTISED_HOST_NAME=zookeeper
-     - KAFKA_ZOOKEEPER_CONNECT=zookeeper1:2181
+     - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
     extra_hosts:
       zookeeper: $ZOOKEEPER_IP
     depends_on:
