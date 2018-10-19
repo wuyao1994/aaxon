@@ -91,8 +91,8 @@ public class ProductServiceImpl implements ProductService {
             }
         }
 
-        restTemplate.getForObject("http://localhost:8081/price/initData", Map.class);
-        restTemplate.getForObject("http://localhost:8082/inventory/initData", Map.class);
+        restTemplate.getForObject("http://price-service/price/initData", Map.class);
+        restTemplate.getForObject("http://inventory-service/inventory/initData", Map.class);
     }
 
 
