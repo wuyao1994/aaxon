@@ -69,7 +69,7 @@ services:
   web-storefront:
     image: microservice/web-storefront
     ports:
-       - 8090:90
+       - 8090:8090
     links:
      - redis
      - mysql
