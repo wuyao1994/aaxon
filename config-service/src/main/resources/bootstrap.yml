@@ -14,6 +14,11 @@ spring:
           skip-ssl-validation: true
           clone-on-start: true
           force-pull: true
+    stream:
+      kafka:
+        binder:
+          brokers: kafka:9092
+          zkNodes: zookeeper:2181
 management:
   endpoints:
     web:
