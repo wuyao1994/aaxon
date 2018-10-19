@@ -9,7 +9,8 @@ spring:
     jpa:
       database: mysql
       show-sql: true
-      hibernate: ddl-auto: none
+      hibernate:
+        ddl-auto: update
   redis:
     database: 0
     host: redis
