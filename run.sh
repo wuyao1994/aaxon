@@ -10,7 +10,7 @@ export DOCKER_IP=$(docker-machine ip $(docker-machine active))
 # docker-machine doesn't exist in Linux, assign default ip if it's not set
 DOCKER_IP=${DOCKER_IP:-0.0.0.0}
 
-docker-compose down
+docker-compose stop
 
 # Start the config service first and wait for it to become available
 docker-compose up --no-recreate -d zookeeper
