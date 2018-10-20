@@ -11,6 +11,10 @@ spring:
       show-sql: true
       hibernate:
         ddl-auto: update
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
 eureka:
   instance:
     prefer-ip-address: true
