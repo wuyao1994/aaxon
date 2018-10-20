@@ -21,18 +21,21 @@ services:
      - DOCKER_IP=$DOCKER_IP
     ports:
      - 8888:8888
+    restart: always
   hystrix-dashboard:
     image: microservice/hystrix-dashboard
     environment:
      - DOCKER_IP=$DOCKER_IP
     ports:
      - 6161:6161
+    restart: always
   mysql:
     image: mysql:5.7
     ports:
      - 3306:3306
     environment:
      - MYSQL_ROOT_PASSWORD=password
+     - MYSQL_DATABASE=microservice
   redis:
     image: redis:3.0
     ports:
@@ -43,6 +46,7 @@ services:
      - 8761:8761
     environment:
      - DOCKER_IP=$DOCKER_IP
+    restart: always
   inventory-service:
     image: microservice/inventory-service
     ports:
@@ -54,6 +58,7 @@ services:
      - config-service
     environment:
      - DOCKER_IP=$DOCKER_IP
+    restart: always
   price-service:
     image: microservice/price-service
     ports:
@@ -65,6 +70,7 @@ services:
      - config-service
     environment:
      - DOCKER_IP=$DOCKER_IP
+    restart: always
   web-storefront:
     image: microservice/web-storefront
     ports:

@@ -3,14 +3,14 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://mysql:3306/microservice
+    url: jdbc:mysql://mysql:3306/microservice?useSSL=false
     username: root
     password: password
-    jpa:
-      database: mysql
-      show-sql: true
-      hibernate:
-        ddl-auto: create
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
   mvc:
     view:
       prefix: /WEB-INF/jsp/
