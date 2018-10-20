@@ -7,7 +7,7 @@
     <title>index</title>
 </head>
 <body>
-<%@ include file="./header.jsp" %>
+<%@ include file="header.jsp" %>
 <br/>
 <table>
     <thead>

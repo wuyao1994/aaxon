@@ -7,7 +7,7 @@
     <title>Product Search</title>
 </head>
 <body>
-<%@ include file="./header.jsp" %>
+<%@ include file="header.jsp" %>
 <br/>
 Product Search: <br/>
 <form action="search" method="get">
