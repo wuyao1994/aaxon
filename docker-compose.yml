@@ -33,7 +33,6 @@ services:
      - 3306:3306
     environment:
      - MYSQL_ROOT_PASSWORD=password
-     - MYSQL_DATABASE=microservice
   redis:
     image: redis:3.0
     ports:
