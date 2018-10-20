@@ -13,8 +13,8 @@ DOCKER_IP=${DOCKER_IP:-0.0.0.0}
 docker-compose down
 
 # Start the config service first and wait for it to become available
-docker-compose up -d zookeeper
-docker-compose up -d kafka
+docker-compose up -d zookeeper --no-recreate
+docker-compose up -d kafka --no-recreate
 docker-compose up -d config-service
 
 while [ -z ${CONFIG_SERVICE_READY} ]; do
@@ -37,7 +37,12 @@ while [ -z ${DISCOVERY_SERVICE_READY} ]; do
 done
 
 # Start the other containers
-docker-compose up -d
+docker-compose up redis -d --no-recreate
+docker-compose up mysql -d --no-recreate
+docker-compose up hystrix-dashboard -d
+docker-compose up inventory-service -d
+docker-compose up price-service -d
+docker-compose up web-storefront -d
 
 # Attach to the log output of the cluster
 docker-compose logs -f
