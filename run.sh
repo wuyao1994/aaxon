@@ -13,8 +13,8 @@ DOCKER_IP=${DOCKER_IP:-0.0.0.0}
 docker-compose down
 
 # Start the config service first and wait for it to become available
-docker-compose up -d zookeeper --no-recreate
-docker-compose up -d kafka --no-recreate
+docker-compose up --no-recreate -d zookeeper
+docker-compose up --no-recreate -d kafka
 docker-compose up -d config-service
 
 while [ -z ${CONFIG_SERVICE_READY} ]; do
