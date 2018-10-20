@@ -76,3 +76,4 @@ services:
      - config-service
     environment:
      - DOCKER_IP=$DOCKER_IP
+    restart: always
