@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Web-Storefront</title>
+    <title>Index</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>

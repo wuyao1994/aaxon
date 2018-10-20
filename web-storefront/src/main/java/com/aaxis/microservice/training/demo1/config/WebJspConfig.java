@@ -13,21 +13,21 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 public class WebJspConfig extends WebMvcConfigurerAdapter{
-    @Bean
-    public InternalResourceViewResolver viewResolver(){
-        InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/jsp/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
-
-
-    /** 指定默认文件的地址，jsp页面引入js和css的时候就不用管项目路径了 */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**")
-                .addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX+"/static/");
-        super.addResourceHandlers(registry);
-    }
+//    @Bean
+//    public InternalResourceViewResolver viewResolver(){
+//        InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
+//        viewResolver.setViewClass(JstlView.class);
+//        viewResolver.setPrefix("/WEB-INF/jsp/");
+//        viewResolver.setSuffix(".jsp");
+//        return viewResolver;
+//    }
+//
+//
+//    /** 指定默认文件的地址，jsp页面引入js和css的时候就不用管项目路径了 */
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/static/**")
+//                .addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX+"/static/");
+//        super.addResourceHandlers(registry);
+//    }
 }
