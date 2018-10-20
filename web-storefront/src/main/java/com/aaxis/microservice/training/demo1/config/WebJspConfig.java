@@ -1,6 +1,7 @@
 package com.aaxis.microservice.training.demo1.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 /**
  * @author elvis
  */
+@Configuration
 public class WebJspConfig extends WebMvcConfigurerAdapter{
     @Bean
     public InternalResourceViewResolver viewResolver(){
