@@ -37,7 +37,11 @@ while [ -z ${DISCOVERY_SERVICE_READY} ]; do
 done
 
 # Start the other containers
-docker-compose up --no-recreate -d
+docker-compose up --no-recreate -d redis
+docker-compose up --no-recreate -d mysql
+docker-compose up -d hystrix-dashboard
+docker-compose up -d price-service
+docker-compose up -d web-storefront
 
 # Attach to the log output of the cluster
 docker-compose logs -f
