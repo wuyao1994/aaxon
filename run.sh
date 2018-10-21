@@ -11,6 +11,12 @@ export DOCKER_IP=$(docker-machine ip $(docker-machine active))
 DOCKER_IP=${DOCKER_IP:-0.0.0.0}
 
 docker-compose stop
+docker-compose rm -f config-service
+docker-compose rm -f discovery-service
+docker-compose rm -f hystrix-dashboard
+docker-compose rm -f price-service
+docker-compose rm -f inventory-service
+docker-compose rm -f web-storefront
 
 # Start the config service first and wait for it to become available
 docker-compose up --no-recreate -d zookeeper
@@ -41,6 +47,7 @@ docker-compose up --no-recreate -d redis
 docker-compose up --no-recreate -d mysql
 docker-compose up -d hystrix-dashboard
 docker-compose up -d price-service
+docker-compose up -d inventory-service
 docker-compose up -d web-storefront
 
 # Attach to the log output of the cluster
