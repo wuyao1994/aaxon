@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
 set -e
+#remove images
+docker-compose stop
+docker-compose rm -f config-service
+docker-compose rm -f discovery-service
+docker-compose rm -f hystrix-dashboard
+docker-compose rm -f price-service
+docker-compose rm -f inventory-service
+docker-compose rm -f web-storefront
 
 # Build the project and docker images
 mvn clean install -Dmaven.test.skip=true
@@ -10,13 +18,6 @@ export DOCKER_IP=$(docker-machine ip $(docker-machine active))
 # docker-machine doesn't exist in Linux, assign default ip if it's not set
 DOCKER_IP=${DOCKER_IP:-0.0.0.0}
 
-docker-compose stop
-docker-compose rm -f config-service
-docker-compose rm -f discovery-service
-docker-compose rm -f hystrix-dashboard
-docker-compose rm -f price-service
-docker-compose rm -f inventory-service
-docker-compose rm -f web-storefront
 
 # Start the config service first and wait for it to become available
 docker-compose up --no-recreate -d zookeeper
