@@ -139,10 +139,10 @@ public class ProductServiceImpl implements ProductService {
                 CriteriaBuilder pCriteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
             if (productId != null) {
-                predicates.add(pCriteriaBuilder.equal(pRoot.get("id"), productId));
+                predicates.add(pCriteriaBuilder.like(pRoot.get("id"), productId));
             }
             if (name != null) {
-                predicates.add(pCriteriaBuilder.equal(pRoot.get("name"), name));
+                predicates.add(pCriteriaBuilder.like(pRoot.get("name"), name));
             }
             return pCriteriaBuilder.or(predicates.toArray(new Predicate[predicates.size()]));
         };
