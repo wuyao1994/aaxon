@@ -46,6 +46,9 @@ done
 # Start the other containers
 docker-compose up --no-recreate -d redis
 docker-compose up --no-recreate -d mysql
+docker-compose up --no-recreate -d elasticsearch
+docker-compose up --no-recreate -d logstash
+docker-compose up --no-recreate -d kibana
 docker-compose up -d hystrix-dashboard
 docker-compose up -d price-service
 docker-compose up -d inventory-service
