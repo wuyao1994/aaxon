@@ -7,6 +7,7 @@ services:
     hostname: elasticsearch
     ports:
       - "9200:9200"
+      - "9300:9300"
     restart: always
   logstash:
     image: docker.elastic.co/logstash/logstash:5.5.1
