@@ -16,12 +16,14 @@ services:
       - $PWD/logstash/conf.d:/etc/logstash/conf.d
       - $PWD/log:/tmp
     hostname: logstash
-    restart: always
     depends_on:
       - elasticsearch
+    extra_hosts:
+      elasticsearch: $DOCKER_IP
     ports:
       - "7001-7005:7001-7005"
       - "4567:4567"
+    restart: always
   kibana:
     image: docker.elastic.co/kibana/kibana:5.5.1
     environment:
