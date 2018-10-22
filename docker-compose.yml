@@ -93,6 +93,8 @@ services:
      - config-service
     environment:
      - DOCKER_IP=$DOCKER_IP
+    extra_hosts:
+      logstash: $DOCKER_IP
     restart: always
   price-service:
     image: microservice/price-service
@@ -105,6 +107,8 @@ services:
      - config-service
     environment:
      - DOCKER_IP=$DOCKER_IP
+    extra_hosts:
+      logstash: $DOCKER_IP
     restart: always
   web-storefront:
     image: microservice/web-storefront
@@ -117,4 +121,6 @@ services:
      - config-service
     environment:
      - DOCKER_IP=$DOCKER_IP
+    extra_hosts:
+      logstash: $DOCKER_IP
     restart: always
