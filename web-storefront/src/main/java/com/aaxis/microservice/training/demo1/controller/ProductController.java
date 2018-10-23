@@ -1,20 +1,29 @@
 package com.aaxis.microservice.training.demo1.controller;
 
+import com.aaxis.microservice.training.demo1.dao.CategoryJpaDao;
+import com.aaxis.microservice.training.demo1.dao.ProductJpaDao;
+import com.aaxis.microservice.training.demo1.dao.UserJpaDao;
 import com.aaxis.microservice.training.demo1.domain.Category;
+import com.aaxis.microservice.training.demo1.domain.Product;
+import com.aaxis.microservice.training.demo1.domain.ProductJpa;
 import com.aaxis.microservice.training.demo1.domain.ProductResult;
 import com.aaxis.microservice.training.demo1.service.CategoryService;
 import com.aaxis.microservice.training.demo1.service.ProductService;
+import com.aaxis.microservice.training.demo1.service.UserService;
 import com.aaxis.microservice.training.demo1.util.SpringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,9 +32,24 @@ public class ProductController {
     private final static Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
     @Autowired
     private ProductService mProductService;
+    @Autowired
+    private UserService    mUserService;
+    @Autowired
+    private CategoryJpaDao mCategoryJpaDao;
+
+    @Autowired
+    private ProductJpaDao mProductJpaDao;
+
+    @Autowired
+    private UserJpaDao mUserJpaDao;
+
+    @Autowired
+    ElasticsearchOperations operations;
 
     @Autowired
     private CategoryService mCategoryService;
+
+
 
     @GetMapping("/initData")
     public String initData() {
@@ -34,11 +58,45 @@ public class ProductController {
     }
 
 
+
+    @Transactional
+    @GetMapping("/loadData")
+    public String loadData() {
+        LOGGER.info("Loading Data");
+        operations.putMapping(Product.class);
+        List<ProductJpa> productList = mProductJpaDao.findAll();
+        List<Product> products = new ArrayList<>();
+        productList.forEach(
+                product -> {
+                    Product product1 = new Product();
+                    product1.setId(product.getId());
+                    product1.setName(product.getName());
+//                    product1.setCategory(product.getCategory());
+                    product1.setCreatedDate(product.getCreatedDate());
+                    product1.setPrice(product.getPrice());
+                    product1.setStock(product.getStock());
+                    product1.setPriority(product.getPriority());
+                    products.add(product1);
+                }
+        );
+        mProductService.save(products);
+        //        operations.putMapping(Category.class);
+        //        List<CategoryJpa> categoryList = mCategoryJpaDao.findAll();
+        //        mCategoryService.save(categoryList);
+        //        operations.putMapping(Account.class);
+        //        List<AccountJpa> accountList = mUserJpaDao.findAll();
+        //        mUserService.save(accountList);
+        return "redirect:/login";
+    }
+
+
+
     @PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
     @GetMapping("/searchPage")
     public String loadsSearchPage() {
         return "/search_page";
     }
+
 
 
     @PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
@@ -49,7 +107,7 @@ public class ProductController {
         int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
         String sortName = request.getParameter("sortName");
         String sortValue = request.getParameter("sortValue");
-        LOGGER.info("search product by product id:{} and sortValue:{} and sortName:{}",productId,sortValue, sortName);
+        LOGGER.info("search product by product id:{} and sortValue:{} and sortName:{}", productId, sortValue, sortName);
         ProductResult productResult = ((RestProductController) SpringUtil.getBean("restProductController"))
                 .search(productId, name, page, sortName, sortValue);
         request.setAttribute("productResult", productResult);

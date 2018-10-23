@@ -1,12 +1,11 @@
 package com.aaxis.microservice.training.demo1.domain;
 
-import org.springframework.data.elasticsearch.annotations.Document;
-
 import javax.persistence.*;
 import java.util.Date;
 
-@Document(indexName = "aaxon", type = "microservice", refreshInterval = "0s")
-public class Product {
+@Entity
+@Table(name = "Product")
+public class ProductJpa {
 
     @Id
     private String id;
@@ -21,7 +20,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category;
+    private CategoryJpa category;
 
     public String getId() {
         return id;
@@ -47,11 +46,11 @@ public class Product {
         price = pPrice;
     }
 
-    public Category getCategory() {
+    public CategoryJpa getCategory() {
         return category;
     }
 
-    public void setCategory(Category pCategory) {
+    public void setCategory(CategoryJpa pCategory) {
         category = pCategory;
     }
 

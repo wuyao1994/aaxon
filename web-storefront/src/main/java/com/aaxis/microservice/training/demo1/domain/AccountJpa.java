@@ -1,12 +1,11 @@
 package com.aaxis.microservice.training.demo1.domain;
 
-import org.springframework.data.elasticsearch.annotations.Document;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Document(indexName = "aaxon", type = "microservice", refreshInterval = "0s")
-public class Account implements Serializable {
+@Entity
+@Table(name = "Account")
+public class AccountJpa implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

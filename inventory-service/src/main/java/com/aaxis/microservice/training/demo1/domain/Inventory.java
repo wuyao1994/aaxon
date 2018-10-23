@@ -1,11 +1,13 @@
 package com.aaxis.microservice.training.demo1.domain;
 
-import java.io.Serializable;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
+@Document(indexName = "aaxon", type = "microservice", refreshInterval = "0s")
 public class Inventory implements Serializable {
 	@Id
 	private String	id;
