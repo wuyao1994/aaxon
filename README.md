@@ -45,36 +45,39 @@ Training report
 
 ### JDK8 Lambda Expression
         
-        Input any comments here;
+        down
         
 ### Spring Validation
         
-        Input any comments here;
+        validate registor input param
         
 ### Springboot Unit Testing
         
-        Input any comments here;
+        write unit test for registor/login/search
 
 ### Logging
         
-        Input any comments here;
+        log4j
         
 ### Spring Security
         
-        Input any comments here;
+        use spring security for login
         
 ### Spring Data JPA - MySQL
         
-        Input any comments here;
+        use jpa mysql
         
 ### Spring Data Redis
         
-        Input any comments here;
+        use redis cache
         
-### Springboot demo1.demo1.demo1.demo1.Application Performance Tuning
+### Springboot Application Performance Tuning
         
-        Input any comments here;
-        
+        add index:
+        ALTER TABLE product ADD INDEX category_priority (category_id, priority);
+        ALTER TABLE product ADD INDEX category_date (category_id, created_date);
+        ALTER TABLE product ADD INDEX category_id (category_id, id);
 ## Optional items
 
-        Add any your implemented items here. 
+        1.ELK+spring cloud sleuth
+        2.spring cloud bus+config/ribbon/hystrix/eureka
