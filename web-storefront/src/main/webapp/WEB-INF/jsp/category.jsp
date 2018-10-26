@@ -17,7 +17,7 @@
         <td>price</td>
         <td>stock</td>
         <td>priority</td>
-        <td>createdDate</td>
+        <td>created_date</td>
     </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@
             <td>${product.price}</td>
             <td>${product.stock}</td>
             <td>${product.priority}</td>
-            <td>${product.createdDate}</td>
+            <td>${product.created_date}</td>
         </tr>
     </c:forEach>
     </tbody>
@@ -40,8 +40,8 @@
             <a href="/category/${productResult.request.requestCategoryId}/${productResult.request.page}/id/desc">Id DESC</a>&nbsp;
             <a href="/category/${productResult.request.requestCategoryId}/${productResult.request.page}/priority/asc">Priority ASC</a>&nbsp;
             <a href="/category/${productResult.request.requestCategoryId}/${productResult.request.page}/priority/desc">Priority DESC</a>&nbsp;
-            <a href="/category/${productResult.request.requestCategoryId}/${productResult.request.page}/createdDate/asc">CreatedDate ASC</a>&nbsp;
-            <a href="/category/${productResult.request.requestCategoryId}/${productResult.request.page}/createdDate/desc">CreatedDate DESC</a>&nbsp;
+            <a href="/category/${productResult.request.requestCategoryId}/${productResult.request.page}/created_date/asc">created_date ASC</a>&nbsp;
+            <a href="/category/${productResult.request.requestCategoryId}/${productResult.request.page}/created_date/desc">created_date DESC</a>&nbsp;
         </td>
     </tr>
     <tr>

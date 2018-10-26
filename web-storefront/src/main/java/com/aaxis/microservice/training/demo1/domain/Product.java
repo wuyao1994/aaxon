@@ -2,17 +2,20 @@ package com.aaxis.microservice.training.demo1.domain;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import java.util.Date;
 
-@Document(indexName = "aaxon", type = "microservice", refreshInterval = "0s")
+@Document(indexName = "mysql", type = "product", refreshInterval = "0s")
 public class Product {
 
-    @Id
+    @Id()
     private String id;
     private String name;
     private Integer priority;
-    private Date createdDate;
+    private Date created_date;
 
     @Transient
     private double price;
@@ -71,11 +74,15 @@ public class Product {
         priority = pPriority;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+
+
+    public Date getCreated_date() {
+        return created_date;
     }
 
-    public void setCreatedDate(Date pCreatedDate) {
-        createdDate = pCreatedDate;
+
+
+    public void setCreated_date(Date pCreated_date) {
+        created_date = pCreated_date;
     }
 }

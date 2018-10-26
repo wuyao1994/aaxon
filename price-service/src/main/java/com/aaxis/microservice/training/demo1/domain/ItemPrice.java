@@ -7,8 +7,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
-@Document(indexName = "aaxon", type = "microservice", refreshInterval = "0s")
+@Document(indexName = "mysql", type = "item_price", refreshInterval = "0s")
 public class ItemPrice implements Serializable {
 	@Id
 	private String	id;

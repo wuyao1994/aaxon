@@ -5,7 +5,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Document(indexName = "aaxon", type = "microservice", refreshInterval = "0s")
+@Document(indexName = "mysql", type = "account", refreshInterval = "0s")
 public class Account implements Serializable {
 
     @Id

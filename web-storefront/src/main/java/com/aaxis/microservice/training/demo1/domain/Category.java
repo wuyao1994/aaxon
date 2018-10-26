@@ -7,15 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
-@Document(indexName = "aaxon", type = "microservice", refreshInterval = "0s")
+@Document(indexName = "mysql", type = "category", refreshInterval = "0s")
 public class Category {
 
     @Id
     private String id;
     private String name;
-
-    @OneToMany(mappedBy = "category")
-    private Set<Product> mProducts;
 
     public String getId() {
         return id;

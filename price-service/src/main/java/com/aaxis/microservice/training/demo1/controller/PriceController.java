@@ -21,12 +21,6 @@ public class PriceController {
 
 
 
-	@GetMapping("/initData")
-	public void initData() {
-		mItemPriceService.initData();
-	}
-
-
 	@Cacheable(value = "price", key = "#productId")
 	@GetMapping("/{productId}")
 	public ItemPrice findPrice(@PathVariable("productId") String productId) {

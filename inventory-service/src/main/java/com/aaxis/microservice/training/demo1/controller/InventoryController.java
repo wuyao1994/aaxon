@@ -21,11 +21,6 @@ public class InventoryController {
 
 
 
-	@GetMapping("/initData")
-	public void initData() {
-		mInventoryService.initData();
-	}
-
 
 	@Cacheable(value = "category", key = "#productId")
 	@GetMapping("/{productId}")

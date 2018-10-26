@@ -6,5 +6,5 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 import java.util.List;
 
 public interface ProductDao extends ElasticsearchRepository<Product, String> {
-    public List<Product> findProductsByCategory_Id(String categoryId);
+    public List<Product> findProductsByCategoryId(String categoryId);
 }

@@ -1,7 +1,6 @@
 package com.aaxis.microservice.training.demo1.service.impl;
 
 import com.aaxis.microservice.training.demo1.dao.InventoryDAO;
-import com.aaxis.microservice.training.demo1.dao.InventoryJpaDAO;
 import com.aaxis.microservice.training.demo1.domain.Inventory;
 import com.aaxis.microservice.training.demo1.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +12,8 @@ import java.util.Optional;
 public class InventoryServiceImpl implements InventoryService {
 
     @Autowired
-    private InventoryJpaDAO mInventoryJpaDAO;
-    @Autowired
     private InventoryDAO    mInventoryDAO;
 
-
-
-    @Override
-    public void initData() {
-        mInventoryJpaDAO.addItemInventory();
-    }
 
 
 

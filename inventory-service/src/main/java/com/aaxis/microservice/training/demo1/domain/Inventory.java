@@ -6,8 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
-@Document(indexName = "aaxon", type = "microservice", refreshInterval = "0s")
+@Document(indexName = "mysql", type = "inventory", refreshInterval = "0s")
 public class Inventory implements Serializable {
 	@Id
 	private String	id;

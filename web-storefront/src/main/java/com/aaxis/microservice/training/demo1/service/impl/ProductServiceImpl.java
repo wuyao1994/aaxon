@@ -8,6 +8,7 @@ import com.aaxis.microservice.training.demo1.service.ProductService;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.QueryStringQueryBuilder;
 import org.elasticsearch.search.sort.FieldSortBuilder;
@@ -80,8 +81,7 @@ public class ProductServiceImpl implements ProductService {
                 product.setName(productName);
                 product.setPriority(new Random().nextInt(100));
                 Date date = randomDate("2010-01-01", "2018-01-01");
-                product.setCreatedDate(date);
-                product.setCategory(category);
+                product.setCreated_date(date);
                 productist.add(product);
 
                 if (productist.size() % PRODUCT_BATCH_SIZE == 0) {
@@ -104,7 +104,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findProductsByCategoryId(String categoryId) {
-        return mProductDao.findProductsByCategory_Id(categoryId);
+        return mProductDao.findProductsByCategoryId(categoryId);
     }
 
 
@@ -116,17 +116,19 @@ public class ProductServiceImpl implements ProductService {
         if (sortName != null) {
             sort = ("ASC".equalsIgnoreCase(sortValue) ? SortOrder.ASC : SortOrder.DESC);
         }
-        BoolQueryBuilder builder = QueryBuilders.boolQuery();
-        builder.must(QueryBuilders.fuzzyQuery("category", mCategoryDao.findById(categoryId).get()));
-        FieldSortBuilder sortBuilder = SortBuilders.fieldSort(sortName).order(sort);
-        PageRequest pageable = new PageRequest(0, 20);
 
         NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
+        QueryBuilder builder = QueryBuilders.matchQuery("category_id", mCategoryDao.findById(categoryId).get().getId());
+        if (sortValue !=null && sort != null) {
+            FieldSortBuilder sortBuilder = SortBuilders.fieldSort(sortName).order(sort);
+            nativeSearchQueryBuilder.withSort(sortBuilder);
+        }
+        PageRequest pageable = new PageRequest(0, 20);
         nativeSearchQueryBuilder.withQuery(builder);
         nativeSearchQueryBuilder.withPageable(pageable);
-        nativeSearchQueryBuilder.withSort(sortBuilder);
         NativeSearchQuery query = nativeSearchQueryBuilder.build();
         Page<Product> resutlList = mProductDao.search(query);
+        addPriceAndInventory(resutlList.getContent());
         long cost = System.currentTimeMillis() - startTime;
         LOGGER.info("COST_TIME:{}", cost);
         return resutlList;
@@ -139,19 +141,28 @@ public class ProductServiceImpl implements ProductService {
 
         long startTime = System.currentTimeMillis();
         SortOrder sort = null;
-        if (sortName != null) {
+        if (sortValue != null) {
             sort = ("ASC".equalsIgnoreCase(sortValue) ? SortOrder.ASC : SortOrder.DESC);
         }
         BoolQueryBuilder builder = QueryBuilders.boolQuery();
-        builder.must(QueryBuilders.fuzzyQuery("id", productId));
-        builder.should(new QueryStringQueryBuilder(name).field("name"));
-        FieldSortBuilder sortBuilder = SortBuilders.fieldSort(sortName).order(sort);
+        if (productId != null) {
+            builder.should(QueryBuilders.queryStringQuery(productId).field("id"));
+        }
+        if (name != null) {
+            builder.should(QueryBuilders.queryStringQuery(name).field("name"));
+        }
+        FieldSortBuilder sortBuilder = null;
+        if (sort != null && sortValue != null) {
+            sortBuilder = SortBuilders.fieldSort(sortName).order(sort);
+        }
         PageRequest pageable = new PageRequest(0, 20);
 
         NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
         nativeSearchQueryBuilder.withQuery(builder);
         nativeSearchQueryBuilder.withPageable(pageable);
-        nativeSearchQueryBuilder.withSort(sortBuilder);
+        if (sortBuilder != null) {
+            nativeSearchQueryBuilder.withSort(sortBuilder);
+        }
         NativeSearchQuery query = nativeSearchQueryBuilder.build();
         Page<Product> resutlList = mProductDao.search(query);
         addPriceAndInventory(resutlList.getContent());

@@ -17,7 +17,7 @@
         <td>price</td>
         <td>stock</td>
         <td>priority</td>
-        <td>createdDate</td>
+        <td>created_date</td>
     </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@
             <td>${product.price}</td>
             <td>${product.stock}</td>
             <td>${product.priority}</td>
-            <td>${product.createdDate}</td>
+            <td>${product.created_date}</td>
         </tr>
     </c:forEach>
     </tbody>
@@ -40,8 +40,8 @@
             <a href="/product/search?productId=${productResult.request.productId}&name=${productResult.request.name}&sortName=id&sortValue=desc">Id DESC</a>&nbsp;
             <a href="/product/search?productId=${productResult.request.productId}&name=${productResult.request.name}&sortName=priority&sortValue=asc">Priority ASC</a>&nbsp;
             <a href="/product/search?productId=${productResult.request.productId}&name=${productResult.request.name}&sortName=priority&sortValue=desc">Priority DESC</a>&nbsp;
-            <a href="/product/search?productId=${productResult.request.productId}&name=${productResult.request.name}&sortName=createdDate&sortValue=asc">CreatedDate ASC</a>&nbsp;
-            <a href="/product/search?productId=${productResult.request.productId}&name=${productResult.request.name}&sortName=createdDate&sortValue=desc">CreatedDate DESC</a>&nbsp;
+            <a href="/product/search?productId=${productResult.request.productId}&name=${productResult.request.name}&sortName=created_date&sortValue=asc">created_date ASC</a>&nbsp;
+            <a href="/product/search?productId=${productResult.request.productId}&name=${productResult.request.name}&sortName=created_date&sortValue=desc">created_date DESC</a>&nbsp;
         </td>
     </tr>
     <tr>

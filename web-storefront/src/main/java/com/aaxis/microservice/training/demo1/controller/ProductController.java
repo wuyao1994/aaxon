@@ -1,11 +1,7 @@
 package com.aaxis.microservice.training.demo1.controller;
 
-import com.aaxis.microservice.training.demo1.dao.CategoryJpaDao;
-import com.aaxis.microservice.training.demo1.dao.ProductJpaDao;
-import com.aaxis.microservice.training.demo1.dao.UserJpaDao;
 import com.aaxis.microservice.training.demo1.domain.Category;
 import com.aaxis.microservice.training.demo1.domain.Product;
-import com.aaxis.microservice.training.demo1.domain.ProductJpa;
 import com.aaxis.microservice.training.demo1.domain.ProductResult;
 import com.aaxis.microservice.training.demo1.service.CategoryService;
 import com.aaxis.microservice.training.demo1.service.ProductService;
@@ -34,14 +30,6 @@ public class ProductController {
     private ProductService mProductService;
     @Autowired
     private UserService    mUserService;
-    @Autowired
-    private CategoryJpaDao mCategoryJpaDao;
-
-    @Autowired
-    private ProductJpaDao mProductJpaDao;
-
-    @Autowired
-    private UserJpaDao mUserJpaDao;
 
     @Autowired
     ElasticsearchOperations operations;
@@ -56,39 +44,6 @@ public class ProductController {
         mProductService.initData();
         return "redirect:/login";
     }
-
-
-
-    @Transactional
-    @GetMapping("/loadData")
-    public String loadData() {
-        LOGGER.info("Loading Data");
-        operations.putMapping(Product.class);
-        List<ProductJpa> productList = mProductJpaDao.findAll();
-        List<Product> products = new ArrayList<>();
-        productList.forEach(
-                product -> {
-                    Product product1 = new Product();
-                    product1.setId(product.getId());
-                    product1.setName(product.getName());
-//                    product1.setCategory(product.getCategory());
-                    product1.setCreatedDate(product.getCreatedDate());
-                    product1.setPrice(product.getPrice());
-                    product1.setStock(product.getStock());
-                    product1.setPriority(product.getPriority());
-                    products.add(product1);
-                }
-        );
-        mProductService.save(products);
-        //        operations.putMapping(Category.class);
-        //        List<CategoryJpa> categoryList = mCategoryJpaDao.findAll();
-        //        mCategoryService.save(categoryList);
-        //        operations.putMapping(Account.class);
-        //        List<AccountJpa> accountList = mUserJpaDao.findAll();
-        //        mUserService.save(accountList);
-        return "redirect:/login";
-    }
-
 
 
     @PreAuthorize("hasRole('USER') OR hasRole('ADMIN')")
