@@ -1,0 +1,51 @@
+@import "~themes/vars";
+
+:global {
+  .ant-layout-header {
+    padding: 0;
+    line-height: 56px;
+  }
+
+  .ant-layout-content {
+    padding: 24px;
+  }
+  .ant-layout-sider {
+
+      .ant-menu-root {
+        height: ~"calc(100vh - 96px)";
+        overflow-x: hidden;
+      }
+  }
+
+  .ant-layout-footer {
+    text-align: center;
+    font-size: 12px;
+    line-height: 40px;
+    padding: 0 24px;
+  }
+}
+
+.logo {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size:16px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: @primary-color;
+  }
+}
+.bread {
+  margin-bottom: 24px;
+
+  :global {
+    .ant-breadcrumb {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

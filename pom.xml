@@ -11,8 +11,6 @@
 
     <modules>
         <module>web-storefront</module>
-        <module>catalog-service</module>
-        <module>price-service</module>
         <module>inventory-service</module>
         <module>config-service</module>
         <module>discovery-service</module>
