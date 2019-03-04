@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: web-storefront
-  cloud:
-    config:
-      uri: http://${DOCKER_IP}:8888

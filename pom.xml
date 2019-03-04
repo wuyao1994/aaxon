@@ -10,11 +10,11 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-        <module>web-storefront</module>
         <module>inventory-service</module>
         <module>config-service</module>
         <module>discovery-service</module>
         <module>hystrix-dashboard</module>
+        <module>upm-service</module>
     </modules>
 
     <parent>
