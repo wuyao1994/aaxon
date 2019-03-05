@@ -1,11 +1,12 @@
 package com.aaxon.dao;
 
-import com.aaxon.domain.SysAccountRoleExample;
-import com.aaxon.domain.SysAccountRoleKey;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
+import com.aaxon.domain.SysAccountRoleExample;
+import com.aaxon.domain.SysAccountRoleKey;
 
 /**
  * @author elvis
@@ -28,5 +29,6 @@ public interface SysAccountRoleMapper {
 	int updateByExampleSelective(@Param("record") SysAccountRoleKey record,
 			@Param("example") SysAccountRoleExample example);
 
-	int updateByExample(@Param("record") SysAccountRoleKey record, @Param("example") SysAccountRoleExample example);
+	int updateByExample(@Param("record") SysAccountRoleKey record,
+			@Param("example") SysAccountRoleExample example);
 }

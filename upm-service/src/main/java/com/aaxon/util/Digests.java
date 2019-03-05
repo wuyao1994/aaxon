@@ -1,23 +1,21 @@
 package com.aaxon.util;
 
-import org.apache.commons.lang3.Validate;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 
+import org.apache.commons.lang3.Validate;
+
 /**
  * @author elviswu
  */
 public class Digests {
-	private static final String	SHA1	= "SHA-1";
-	private static final String	MD5		= "MD5";
+	private static final String SHA1 = "SHA-1";
+	private static final String MD5 = "MD5";
 
-	private static SecureRandom	random	= new SecureRandom();
-
-
+	private static SecureRandom random = new SecureRandom();
 
 	/**
 	 * 对输入字符串进行sha1散列.
@@ -26,24 +24,19 @@ public class Digests {
 		return digest(input, SHA1, null, 1);
 	}
 
-
-
 	public static byte[] sha1(byte[] input, byte[] salt) {
 		return digest(input, SHA1, salt, 1);
 	}
-
-
 
 	public static byte[] sha1(byte[] input, byte[] salt, int iterations) {
 		return digest(input, SHA1, salt, iterations);
 	}
 
-
-
 	/**
 	 * 对字符串进行散列, 支持md5与sha1算法.
 	 */
-	private static byte[] digest(byte[] input, String algorithm, byte[] salt, int iterations) {
+	private static byte[] digest(byte[] input, String algorithm, byte[] salt,
+			int iterations) {
 		try {
 			MessageDigest digest = MessageDigest.getInstance(algorithm);
 
@@ -58,28 +51,25 @@ public class Digests {
 				result = digest.digest(result);
 			}
 			return result;
-		} catch (GeneralSecurityException e) {
+		}
+		catch (GeneralSecurityException e) {
 			throw Exceptions.unchecked(e);
 		}
 	}
 
-
-
 	/**
 	 * 生成随机的Byte[]作为salt.
 	 *
-	 * @param numBytes
-	 *            byte数组的大小
+	 * @param numBytes byte数组的大小
 	 */
 	public static byte[] generateSalt(int numBytes) {
-		Validate.isTrue(numBytes > 0, "numBytes argument must be a positive integer (1 or larger)", numBytes);
+		Validate.isTrue(numBytes > 0,
+				"numBytes argument must be a positive integer (1 or larger)", numBytes);
 
 		byte[] bytes = new byte[numBytes];
 		random.nextBytes(bytes);
 		return bytes;
 	}
-
-
 
 	/**
 	 * 对文件进行md5散列.
@@ -88,16 +78,12 @@ public class Digests {
 		return digest(input, MD5);
 	}
 
-
-
 	/**
 	 * 对文件进行sha1散列.
 	 */
 	public static byte[] sha1(InputStream input) throws IOException {
 		return digest(input, SHA1);
 	}
-
-
 
 	private static byte[] digest(InputStream input, String algorithm) throws IOException {
 		try {
@@ -112,7 +98,8 @@ public class Digests {
 			}
 
 			return messageDigest.digest();
-		} catch (GeneralSecurityException e) {
+		}
+		catch (GeneralSecurityException e) {
 			throw Exceptions.unchecked(e);
 		}
 	}

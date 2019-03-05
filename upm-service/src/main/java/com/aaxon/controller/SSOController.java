@@ -1,15 +1,17 @@
 package com.aaxon.controller;
 
-import com.aaxon.domain.ShiroUser;
-import com.aaxon.service.UpmsApiService;
-import com.google.common.collect.Maps;
+import static org.apache.shiro.SecurityUtils.getSubject;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
-import static org.apache.shiro.SecurityUtils.getSubject;
+import com.aaxon.domain.ShiroUser;
+import com.aaxon.service.UpmsApiService;
+import com.google.common.collect.Maps;
 
 /**
  * @author elviswu
@@ -17,9 +19,8 @@ import static org.apache.shiro.SecurityUtils.getSubject;
 @RestController
 @RequestMapping("/user")
 public class SSOController {
+	@Autowired
 	private UpmsApiService mUpmsApiService;
-
-
 
 	@RequestMapping
 	public Map<String, Object> user() {
@@ -30,15 +31,14 @@ public class SSOController {
 			res.put("user", user);
 			res.put("menu", user.getMenus());
 			return res;
-		} else {
+		}
+		else {
 			res.put("user", null);
 			res.put("menu", null);
 			return res;
 		}
 
 	}
-
-
 
 	@PostMapping("/login")
 	public void login(String username, String password) {

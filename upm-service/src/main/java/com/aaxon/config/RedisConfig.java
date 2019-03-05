@@ -29,13 +29,13 @@ public class RedisConfig extends CachingConfigurerSupport {
 	@Bean
 	@Override
 	public KeyGenerator keyGenerator() {
-		return new KeyGenerator(){
+		return new KeyGenerator() {
 			@Override
 			public Object generate(Object target, Method method, Object... params) {
 				StringBuffer sb = new StringBuffer();
 				sb.append(target.getClass().getName());
 				sb.append(method.getName());
-				for(Object obj:params){
+				for (Object obj : params) {
 					sb.append(obj.toString());
 				}
 				return sb.toString();
@@ -49,8 +49,10 @@ public class RedisConfig extends CachingConfigurerSupport {
 	}
 
 	@Bean
-	public RedisTemplate<String, Object> redisTemplate(JedisConnectionFactory jedisConnectionFactory ) {
-		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+	public RedisTemplate<String, Object> redisTemplate(
+			JedisConnectionFactory jedisConnectionFactory) {
+		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(
+				Object.class);
 		ObjectMapper om = new ObjectMapper();
 		om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
 		om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);

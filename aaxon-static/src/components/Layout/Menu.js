@@ -2,12 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Menu, Icon } from 'antd'
 import { Link } from 'react-router-dom'
-import { arrayToTree, queryArray } from '../../utils'
-import pathToRegexp from 'path-to-regexp'
+import { arrayToTree } from '../../utils'
 
 const { SubMenu } = Menu
 const Menus = ({
-  menu, location,
+  menu,
 }) => {
   const menuTree = arrayToTree(menu.filter(_ => _.menuLevel !== '-1'), 'id', 'mpid')
 
@@ -43,7 +42,6 @@ const Menus = ({
 }
 Menus.propTypes = {
   menu: PropTypes.array,
-  location: PropTypes.object,
 }
 export default Menus
 

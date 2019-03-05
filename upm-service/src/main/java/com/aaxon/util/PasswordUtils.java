@@ -11,20 +11,14 @@ public class PasswordUtils {
 		return str.getBytes();
 	}
 
-
-
 	public static String getEncodePassWord(String passWord, byte[] salt) {
 		byte[] hashPassword = Digests.sha1(getBytes(passWord), salt, 1024);
 		return encodeHex(hashPassword);
 	}
 
-
-
 	public static String encodeHex(byte[] bytes) {
 		return Hex.encodeHexString(bytes);
 	}
-
-
 
 	/**
 	 * Hex解密算法
@@ -32,7 +26,8 @@ public class PasswordUtils {
 	public static byte[] decodeHex(String input) {
 		try {
 			return Hex.decodeHex(input.toCharArray());
-		} catch (DecoderException e) {
+		}
+		catch (DecoderException e) {
 			throw Exceptions.unchecked(e);
 		}
 	}

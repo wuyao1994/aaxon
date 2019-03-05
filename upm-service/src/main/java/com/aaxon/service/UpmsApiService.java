@@ -9,7 +9,5 @@ public interface UpmsApiService {
 
 	public ShiroUser login(String username, String password);
 
-
-
 	public void setShiroUserExtraInfo(ShiroUser shiroUser);
 }

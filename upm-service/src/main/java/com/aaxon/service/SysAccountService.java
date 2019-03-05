@@ -1,9 +1,8 @@
 package com.aaxon.service;
 
+import java.util.List;
 
 import com.aaxon.domain.SysAccount;
-
-import java.util.List;
 
 /**
  * SysAccountService interface
@@ -11,7 +10,7 @@ import java.util.List;
  */
 public interface SysAccountService {
 	/**
-     * select accounts
+	 * select accounts
 	 * @param username
 	 * @return
 	 */

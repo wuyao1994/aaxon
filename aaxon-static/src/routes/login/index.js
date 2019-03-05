@@ -29,7 +29,7 @@ const Login = ({
   return (
     <div className={styles.form}>
       <div className={styles.title}>
-        <span>AARON</span>
+        <span>AAXON</span>
       </div>
       <Form onSubmit={handleSubmit}>
         <FormItem>

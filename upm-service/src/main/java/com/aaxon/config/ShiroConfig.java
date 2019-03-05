@@ -1,9 +1,10 @@
 package com.aaxon.config;
 
-import com.aaxon.shiro.filter.MyFromAuthenticationFilter;
-import com.aaxon.shiro.filter.MyLogoutFilter;
-import com.aaxon.shiro.filter.MyUserFilter;
-import com.aaxon.shiro.realm.ShiroRealm;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.Filter;
+
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
@@ -19,9 +20,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
-import javax.servlet.Filter;
-import java.util.HashMap;
-import java.util.Map;
+import com.aaxon.shiro.filter.MyFromAuthenticationFilter;
+import com.aaxon.shiro.filter.MyLogoutFilter;
+import com.aaxon.shiro.filter.MyUserFilter;
+import com.aaxon.shiro.realm.ShiroRealm;
 
 @Configuration
 public class ShiroConfig {
@@ -40,7 +42,7 @@ public class ShiroConfig {
 		shiroFilter.setSecurityManager(securityManager());
 		Map<String, Filter> filters = new HashMap<>();
 		filters.put("anon", new AnonymousFilter());
-        filters.put("authc", new MyFromAuthenticationFilter());
+		filters.put("authc", new MyFromAuthenticationFilter());
 		filters.put("logout", new MyLogoutFilter());
 		filters.put("user", new MyUserFilter());
 		filters.put("roles", new RolesAuthorizationFilter());
@@ -49,8 +51,6 @@ public class ShiroConfig {
 		return shiroFilter;
 
 	}
-
-
 
 	/**
 	 * 实现了Initializable或者Destroyable的shiro对象将会自动调用init() and/or destory()方法
@@ -63,8 +63,6 @@ public class ShiroConfig {
 		return new LifecycleBeanPostProcessor();
 	}
 
-
-
 	@Bean
 	@DependsOn("lifecycleBeanPostProcessor")
 	public EhCacheManager ehCacheManager() {
@@ -73,15 +71,11 @@ public class ShiroConfig {
 		return ehCacheManager;
 	}
 
-
-
 	@Bean
 	@DependsOn("lifecycleBeanPostProcessor")
 	public ShiroRealm realm() {
 		return new ShiroRealm();
 	}
-
-
 
 	@Bean
 	@DependsOn("lifecycleBeanPostProcessor")
@@ -91,8 +85,6 @@ public class ShiroConfig {
 		return defaultAdvisorAutoProxyCreator;
 	}
 
-
-
 	@Bean
 	public SimpleCookie rememberMeCookie() {
 		SimpleCookie rememberCookie = new SimpleCookie("rememberMe");
@@ -101,8 +93,6 @@ public class ShiroConfig {
 		return rememberCookie;
 	}
 
-
-
 	@Bean
 	public CookieRememberMeManager rememberMeManager() {
 		CookieRememberMeManager rememberMeManager = new CookieRememberMeManager();
@@ -110,8 +100,6 @@ public class ShiroConfig {
 		rememberMeManager.setCookie(rememberMeCookie());
 		return rememberMeManager;
 	}
-
-
 
 	@Bean(name = "securityManager")
 	public SecurityManager securityManager() {

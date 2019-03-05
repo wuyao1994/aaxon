@@ -1,12 +1,13 @@
 package com.aaxon.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.aaxon.dao.SysAccountMapper;
 import com.aaxon.domain.SysAccount;
 import com.aaxon.domain.SysAccountExample;
 import com.aaxon.service.SysAccountService;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 /**
  * @author elviswu
@@ -14,8 +15,6 @@ import java.util.List;
 public class SysAccountServiceImpl implements SysAccountService {
 	@Autowired
 	private SysAccountMapper sysAccountMapper;
-
-
 
 	@Override
 	public List<SysAccount> selectAccountsByUsername(String username) {

@@ -1,5 +1,13 @@
 package com.aaxon.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.aaxon.dao.SysAccountMapper;
 import com.aaxon.dao.SysAccountRoleMapper;
 import com.aaxon.dao.SysMenuMapper;
@@ -9,32 +17,23 @@ import com.aaxon.dao.SysRolePermissionMapper;
 import com.aaxon.domain.*;
 import com.aaxon.service.UpmsApiService;
 import com.aaxon.util.PasswordUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author elvis
  */
 public class UpmsApiServiceImpl implements UpmsApiService {
 	@Autowired
-	private SysAccountMapper        sysAccountMapper;
+	private SysAccountMapper sysAccountMapper;
 	@Autowired
-	private SysAccountRoleMapper    sysAccountRoleMapper;
+	private SysAccountRoleMapper sysAccountRoleMapper;
 	@Autowired
-	private SysMenuMapper           sysMenuMapper;
+	private SysMenuMapper sysMenuMapper;
 	@Autowired
-	private SysPermissionMapper     sysPermissionMapper;
+	private SysPermissionMapper sysPermissionMapper;
 	@Autowired
-	private SysRoleMapper           sysRoleMapper;
+	private SysRoleMapper sysRoleMapper;
 	@Autowired
 	private SysRolePermissionMapper sysRolePermissionMapper;
-
-
 
 	@Override
 	public ShiroUser login(String username, String password) {
@@ -43,11 +42,13 @@ public class UpmsApiServiceImpl implements UpmsApiService {
 		List<SysAccount> accounts = sysAccountMapper.selectByExample(exp);
 		if (accounts.size() > 0) {
 			SysAccount account = accounts.get(0);
-			String currPassword = PasswordUtils.getEncodePassWord(password, PasswordUtils.decodeHex(account.getSalt()));
+			String currPassword = PasswordUtils.getEncodePassWord(password,
+					PasswordUtils.decodeHex(account.getSalt()));
 			if (!account.getPassword().equals(currPassword)) {
 				throw new AuthenticationException("password is  not correct");
 			}
-		} else {
+		}
+		else {
 			throw new UnknownAccountException("username is not correct");
 		}
 		SysAccount account = accounts.get(0);
@@ -60,8 +61,6 @@ public class UpmsApiServiceImpl implements UpmsApiService {
 		return shiroUser;
 	}
 
-
-
 	@Override
 	public void setShiroUserExtraInfo(ShiroUser shiroUser) {
 		List<SysRole> roles;
@@ -72,15 +71,18 @@ public class UpmsApiServiceImpl implements UpmsApiService {
 			roles = sysRoleMapper.selectByExample(null);
 			permissions = sysPermissionMapper.selectByExample(null);
 			menus = sysMenuMapper.selectByExample(null);
-		} else {
+		}
+		else {
 			// query roles
 			SysAccountRoleExample sysAccountRoleExample = new SysAccountRoleExample();
-			sysAccountRoleExample.createCriteria().andAccountIdEqualTo(shiroUser.getAccountId());
-			List<SysAccountRoleKey> sysAccountRoleKeys = sysAccountRoleMapper.selectByExample(sysAccountRoleExample);
+			sysAccountRoleExample.createCriteria()
+					.andAccountIdEqualTo(shiroUser.getAccountId());
+			List<SysAccountRoleKey> sysAccountRoleKeys = sysAccountRoleMapper
+					.selectByExample(sysAccountRoleExample);
 
 			SysRoleExample roleExample = new SysRoleExample();
-			List<String> roleIds = sysAccountRoleKeys.stream().map(SysAccountRoleKey::getRoleId)
-					.collect(Collectors.toList());
+			List<String> roleIds = sysAccountRoleKeys.stream()
+					.map(SysAccountRoleKey::getRoleId).collect(Collectors.toList());
 			roleExample.createCriteria().andIdIn(roleIds);
 			if (roleIds.size() == 0) {
 				throw new AuthenticationException("role permission deny");
@@ -92,7 +94,8 @@ public class UpmsApiServiceImpl implements UpmsApiService {
 			rolePermissionExample.createCriteria().andRoleIdIn(roleIds);
 			List<SysRolePermissionKey> sysRolePermissionKeys = sysRolePermissionMapper
 					.selectByExample(rolePermissionExample);
-			List<String> permissionsIds = sysRolePermissionKeys.stream().map(SysRolePermissionKey::getPermissionId)
+			List<String> permissionsIds = sysRolePermissionKeys.stream()
+					.map(SysRolePermissionKey::getPermissionId)
 					.collect(Collectors.toList());
 			SysPermissionExample sysPermissionExample = new SysPermissionExample();
 			sysPermissionExample.createCriteria().andIdIn(permissionsIds);
@@ -104,8 +107,10 @@ public class UpmsApiServiceImpl implements UpmsApiService {
 			menuExample.createCriteria().andPermissionIn(permissionsIds);
 			menus = sysMenuMapper.selectByExample(menuExample);
 		}
-		List<String> roleStr = roles.stream().map(SysRole::getName).collect(Collectors.toList());
-		List<String> permissionsStr = permissions.stream().map(SysPermission::getCode).collect(Collectors.toList());
+		List<String> roleStr = roles.stream().map(SysRole::getName)
+				.collect(Collectors.toList());
+		List<String> permissionsStr = permissions.stream().map(SysPermission::getCode)
+				.collect(Collectors.toList());
 
 		shiroUser.setRoles(roleStr);
 		shiroUser.setPermissions(permissionsStr);
