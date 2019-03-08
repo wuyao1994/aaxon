@@ -11,13 +11,15 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import com.aaxon.domain.ShiroUser;
-import com.aaxon.service.UpmsApiService;
+import com.aaxon.service.UpmApiService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author elviswu
  */
 public class ShiroRealm extends AuthorizingRealm {
-	private UpmsApiService mUpmsApiService;
+	@Autowired
+	private UpmApiService mUpmApiService;
 
 	/**
 	 * 授权：验证是调用
@@ -48,7 +50,7 @@ public class ShiroRealm extends AuthorizingRealm {
 		UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
 		String username = usernamePasswordToken.getUsername();
 		String password = new String(usernamePasswordToken.getPassword());
-		ShiroUser shiroUser = mUpmsApiService.login(username, password);
+		ShiroUser shiroUser = mUpmApiService.login(username, password);
 		return new SimpleAuthenticationInfo(shiroUser,
 				usernamePasswordToken.getPassword(), getName());
 	}

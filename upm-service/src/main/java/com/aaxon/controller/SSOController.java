@@ -7,10 +7,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aaxon.domain.ShiroUser;
-import com.aaxon.service.UpmsApiService;
+import com.aaxon.service.UpmApiService;
 import com.google.common.collect.Maps;
 
 /**
@@ -20,14 +21,14 @@ import com.google.common.collect.Maps;
 @RequestMapping("/user")
 public class SSOController {
 	@Autowired
-	private UpmsApiService mUpmsApiService;
+	private UpmApiService mUpmApiService;
 
-	@RequestMapping
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public Map<String, Object> user() {
 		Map<String, Object> res = Maps.newHashMap();
 		if (getSubject().isAuthenticated() || getSubject().isRemembered()) {
 			ShiroUser user = (ShiroUser) getSubject().getPrincipal();
-			mUpmsApiService.setShiroUserExtraInfo(user);
+			mUpmApiService.setShiroUserExtraInfo(user);
 			res.put("user", user);
 			res.put("menu", user.getMenus());
 			return res;
@@ -42,7 +43,7 @@ public class SSOController {
 
 	@PostMapping("/login")
 	public void login(String username, String password) {
-		mUpmsApiService.login(username, password);
+		mUpmApiService.login(username, password);
 	}
 
 }

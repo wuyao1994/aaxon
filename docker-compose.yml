@@ -82,38 +82,10 @@ services:
     environment:
      - DOCKER_IP=$DOCKER_IP
     restart: always
-  inventory-service:
-    image: microservice/inventory-service
-    ports:
-       - 8082:8082
-    links:
-     - redis
-     - mysql
-     - discovery-service
-     - config-service
-    environment:
-     - DOCKER_IP=$DOCKER_IP
-    extra_hosts:
-      logstash: $DOCKER_IP
-    restart: always
-  price-service:
-    image: microservice/price-service
+  upm-service:
+    image: microservice/upm-service
     ports:
        - 8081:8081
-    links:
-     - redis
-     - mysql
-     - discovery-service
-     - config-service
-    environment:
-     - DOCKER_IP=$DOCKER_IP
-    extra_hosts:
-      logstash: $DOCKER_IP
-    restart: always
-  web-storefront:
-    image: microservice/web-storefront
-    ports:
-       - 8090:8090
     links:
      - redis
      - mysql

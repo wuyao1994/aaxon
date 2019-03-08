@@ -25,6 +25,9 @@ import com.aaxon.shiro.filter.MyLogoutFilter;
 import com.aaxon.shiro.filter.MyUserFilter;
 import com.aaxon.shiro.realm.ShiroRealm;
 
+/**
+ * @author elviswu
+ */
 @Configuration
 public class ShiroConfig {
 	@Bean(name = "shiroFilter")
@@ -55,8 +58,6 @@ public class ShiroConfig {
 	/**
 	 * 实现了Initializable或者Destroyable的shiro对象将会自动调用init() and/or destory()方法
 	 * 所以这个Bean需要使用 @DependsOn 在其它对象之前初始化
-	 * 
-	 * @return
 	 */
 	@Bean
 	public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {

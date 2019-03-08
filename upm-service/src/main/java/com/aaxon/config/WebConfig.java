@@ -10,6 +10,9 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+/**
+ * @author elviswu
+ */
 @Configuration
 @RestController
 public class WebConfig extends WebMvcConfigurerAdapter {
@@ -17,8 +20,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	private Resource indexHtml;
 
 	private static final String[] STATIC_RESOURCES = { "/**/*.css", "/**/*.js",
-			"/**/*.jpg", "/**/*.png", "/**/*.svg", // 图片
-			"/**/*.eot", "/**/*.ttf", "/**/*.woff" // 字体文件
+			"/**/*.jpg", "/**/*.png", "/**/*.svg",
+			"/**/*.eot", "/**/*.ttf", "/**/*.woff"
 	};
 
 	@Override

@@ -15,13 +15,13 @@ import com.aaxon.dao.SysPermissionMapper;
 import com.aaxon.dao.SysRoleMapper;
 import com.aaxon.dao.SysRolePermissionMapper;
 import com.aaxon.domain.*;
-import com.aaxon.service.UpmsApiService;
+import com.aaxon.service.UpmApiService;
 import com.aaxon.util.PasswordUtils;
 
 /**
  * @author elvis
  */
-public class UpmsApiServiceImpl implements UpmsApiService {
+public class UpmApiServiceImpl implements UpmApiService {
 	@Autowired
 	private SysAccountMapper sysAccountMapper;
 	@Autowired

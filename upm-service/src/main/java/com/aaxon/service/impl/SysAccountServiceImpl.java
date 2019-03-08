@@ -8,6 +8,7 @@ import com.aaxon.dao.SysAccountMapper;
 import com.aaxon.domain.SysAccount;
 import com.aaxon.domain.SysAccountExample;
 import com.aaxon.service.SysAccountService;
+import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @author elviswu
