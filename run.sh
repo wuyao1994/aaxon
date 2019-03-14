@@ -6,9 +6,7 @@ docker-compose stop
 docker-compose rm -f config-service
 docker-compose rm -f discovery-service
 docker-compose rm -f hystrix-dashboard
-docker-compose rm -f price-service
-docker-compose rm -f inventory-service
-docker-compose rm -f web-storefront
+docker-compose rm -f upm-service
 
 # Build the project and docker images
 mvn clean install -Dmaven.test.skip=true
@@ -50,9 +48,7 @@ docker-compose up --no-recreate -d elasticsearch
 docker-compose up --no-recreate -d logstash
 docker-compose up --no-recreate -d kibana
 docker-compose up -d hystrix-dashboard
-docker-compose up -d price-service
-docker-compose up -d inventory-service
-docker-compose up -d web-storefront
+docker-compose up -d upm-service
 
 # Attach to the log output of the cluster
 docker-compose logs -f
