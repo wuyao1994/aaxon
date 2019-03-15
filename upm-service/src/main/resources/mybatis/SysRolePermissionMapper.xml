@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.upm.dao.mapper.SysRolePermissionMapper">
-    <resultMap id="BaseResultMap" type="com.upm.domain.SysRolePermissionKey">
+<mapper namespace="com.aaxon.dao.mapper.SysRolePermissionMapper">
+    <resultMap id="BaseResultMap" type="com.aaxon.domain.SysRolePermissionKey">
         <id column="role_id" jdbcType="CHAR" property="roleId"/>
         <id column="permission_id" jdbcType="CHAR" property="permissionId"/>
     </resultMap>
@@ -68,7 +68,7 @@
     <sql id="Base_Column_List">
         role_id, permission_id
     </sql>
-    <select id="selectByExample" parameterType="com.upm.domain.SysRolePermissionExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.aaxon.domain.SysRolePermissionExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -82,22 +82,22 @@
             order by ${orderByClause}
         </if>
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="com.upm.domain.SysRolePermissionKey">
+    <delete id="deleteByPrimaryKey" parameterType="com.aaxon.domain.SysRolePermissionKey">
         delete from sys_role_permission
         where role_id = #{roleId,jdbcType=CHAR}
         and permission_id = #{permissionId,jdbcType=CHAR}
     </delete>
-    <delete id="deleteByExample" parameterType="com.upm.domain.SysRolePermissionExample">
+    <delete id="deleteByExample" parameterType="com.aaxon.domain.SysRolePermissionExample">
         delete from sys_role_permission
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.upm.domain.SysRolePermissionKey">
+    <insert id="insert" parameterType="com.aaxon.domain.SysRolePermissionKey">
         insert into sys_role_permission (role_id, permission_id)
         values (#{roleId,jdbcType=CHAR}, #{permissionId,jdbcType=CHAR})
     </insert>
-    <insert id="insertSelective" parameterType="com.upm.domain.SysRolePermissionKey">
+    <insert id="insertSelective" parameterType="com.aaxon.domain.SysRolePermissionKey">
         insert into sys_role_permission
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="roleId != null">
@@ -116,7 +116,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.upm.domain.SysRolePermissionExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.aaxon.domain.SysRolePermissionExample" resultType="java.lang.Long">
         select count(*) from sys_role_permission
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
