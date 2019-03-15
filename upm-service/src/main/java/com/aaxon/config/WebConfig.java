@@ -20,9 +20,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	private Resource indexHtml;
 
 	private static final String[] STATIC_RESOURCES = { "/**/*.css", "/**/*.js",
-			"/**/*.jpg", "/**/*.png", "/**/*.svg",
-			"/**/*.eot", "/**/*.ttf", "/**/*.woff"
-	};
+			"/**/*.jpg", "/**/*.png", "/**/*.svg", "/**/*.eot", "/**/*.ttf",
+			"/**/*.woff" };
 
 	@Override
 	public void configurePathMatch(PathMatchConfigurer configurer) {

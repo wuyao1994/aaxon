@@ -5,10 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.aaxon.dao.SysAccountMapper;
-import com.aaxon.domain.SysAccount;
-import com.aaxon.domain.SysAccountExample;
+import com.aaxon.model.SysAccount;
+import com.aaxon.model.SysAccountExample;
 import com.aaxon.service.SysAccountService;
-import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @author elviswu

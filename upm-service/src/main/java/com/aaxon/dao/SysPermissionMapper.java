@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.aaxon.domain.SysPermission;
-import com.aaxon.domain.SysPermissionExample;
+import com.aaxon.model.SysPermission;
+import com.aaxon.model.SysPermissionExample;
 
 /**
  * @author elvis

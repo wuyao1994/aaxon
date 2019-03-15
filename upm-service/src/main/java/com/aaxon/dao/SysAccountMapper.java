@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.aaxon.domain.SysAccount;
-import com.aaxon.domain.SysAccountExample;
+import com.aaxon.model.SysAccount;
+import com.aaxon.model.SysAccountExample;
 
 /**
  * @@author elvis

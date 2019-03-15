@@ -1,4 +1,4 @@
-package com.aaxon.domain;
+package com.aaxon.model;
 
 import java.util.List;
 

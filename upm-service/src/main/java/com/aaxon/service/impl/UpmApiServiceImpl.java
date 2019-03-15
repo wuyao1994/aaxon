@@ -14,7 +14,7 @@ import com.aaxon.dao.SysMenuMapper;
 import com.aaxon.dao.SysPermissionMapper;
 import com.aaxon.dao.SysRoleMapper;
 import com.aaxon.dao.SysRolePermissionMapper;
-import com.aaxon.domain.*;
+import com.aaxon.model.*;
 import com.aaxon.service.UpmApiService;
 import com.aaxon.util.PasswordUtils;
 

@@ -1,4 +1,4 @@
-package com.aaxon.domain;
+package com.aaxon.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,14 +6,14 @@ import java.util.List;
 /**
  * @author elviswu
  */
-public class SysRolePermissionExample {
+public class SysAccountRoleExample {
 	protected String orderByClause;
 
 	protected boolean distinct;
 
 	protected List<Criteria> oredCriteria;
 
-	public SysRolePermissionExample() {
+	public SysAccountRoleExample() {
 		oredCriteria = new ArrayList<Criteria>();
 	}
 
@@ -189,73 +189,73 @@ public class SysRolePermissionExample {
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdIsNull() {
-			addCriterion("permission_id is null");
+		public Criteria andAccountIdIsNull() {
+			addCriterion("account_id is null");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdIsNotNull() {
-			addCriterion("permission_id is not null");
+		public Criteria andAccountIdIsNotNull() {
+			addCriterion("account_id is not null");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdEqualTo(String value) {
-			addCriterion("permission_id =", value, "permissionId");
+		public Criteria andAccountIdEqualTo(String value) {
+			addCriterion("account_id =", value, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdNotEqualTo(String value) {
-			addCriterion("permission_id <>", value, "permissionId");
+		public Criteria andAccountIdNotEqualTo(String value) {
+			addCriterion("account_id <>", value, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdGreaterThan(String value) {
-			addCriterion("permission_id >", value, "permissionId");
+		public Criteria andAccountIdGreaterThan(String value) {
+			addCriterion("account_id >", value, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdGreaterThanOrEqualTo(String value) {
-			addCriterion("permission_id >=", value, "permissionId");
+		public Criteria andAccountIdGreaterThanOrEqualTo(String value) {
+			addCriterion("account_id >=", value, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdLessThan(String value) {
-			addCriterion("permission_id <", value, "permissionId");
+		public Criteria andAccountIdLessThan(String value) {
+			addCriterion("account_id <", value, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdLessThanOrEqualTo(String value) {
-			addCriterion("permission_id <=", value, "permissionId");
+		public Criteria andAccountIdLessThanOrEqualTo(String value) {
+			addCriterion("account_id <=", value, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdLike(String value) {
-			addCriterion("permission_id like", value, "permissionId");
+		public Criteria andAccountIdLike(String value) {
+			addCriterion("account_id like", value, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdNotLike(String value) {
-			addCriterion("permission_id not like", value, "permissionId");
+		public Criteria andAccountIdNotLike(String value) {
+			addCriterion("account_id not like", value, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdIn(List<String> values) {
-			addCriterion("permission_id in", values, "permissionId");
+		public Criteria andAccountIdIn(List<String> values) {
+			addCriterion("account_id in", values, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdNotIn(List<String> values) {
-			addCriterion("permission_id not in", values, "permissionId");
+		public Criteria andAccountIdNotIn(List<String> values) {
+			addCriterion("account_id not in", values, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdBetween(String value1, String value2) {
-			addCriterion("permission_id between", value1, value2, "permissionId");
+		public Criteria andAccountIdBetween(String value1, String value2) {
+			addCriterion("account_id between", value1, value2, "accountId");
 			return (Criteria) this;
 		}
 
-		public Criteria andPermissionIdNotBetween(String value1, String value2) {
-			addCriterion("permission_id not between", value1, value2, "permissionId");
+		public Criteria andAccountIdNotBetween(String value1, String value2) {
+			addCriterion("account_id not between", value1, value2, "accountId");
 			return (Criteria) this;
 		}
 	}

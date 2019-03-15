@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.aaxon.domain.ShiroUser;
+import com.aaxon.model.ShiroUser;
 
 /**
  * @author elviswu
@@ -15,7 +15,8 @@ import com.aaxon.domain.ShiroUser;
 public interface UpmApiService {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	ShiroUser login(@RequestParam("username") String username, @RequestParam("password") String password);
+	ShiroUser login(@RequestParam("username") String username,
+			@RequestParam("password") String password);
 
 	@RequestMapping(value = "/set-user-info", method = RequestMethod.GET)
 	void setShiroUserExtraInfo(@RequestBody ShiroUser shiroUser);
