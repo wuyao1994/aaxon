@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.upm.dao.mapper.SysAccountRoleMapper">
-    <resultMap id="BaseResultMap" type="com.upm.dao.model.SysAccountRoleKey">
+    <resultMap id="BaseResultMap" type="com.upm.domain.SysAccountRoleKey">
         <id column="role_id" jdbcType="CHAR" property="roleId"/>
         <id column="account_id" jdbcType="CHAR" property="accountId"/>
     </resultMap>
@@ -68,7 +68,7 @@
     <sql id="Base_Column_List">
         role_id, account_id
     </sql>
-    <select id="selectByExample" parameterType="com.upm.dao.model.SysAccountRoleExample" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="com.upm.domain.SysAccountRoleExample" resultMap="BaseResultMap">
         select
         <if test="distinct">
             distinct
@@ -82,22 +82,22 @@
             order by ${orderByClause}
         </if>
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="com.upm.dao.model.SysAccountRoleKey">
+    <delete id="deleteByPrimaryKey" parameterType="com.upm.domain.SysAccountRoleKey">
         delete from sys_account_role
         where role_id = #{roleId,jdbcType=CHAR}
         and account_id = #{accountId,jdbcType=CHAR}
     </delete>
-    <delete id="deleteByExample" parameterType="com.upm.dao.model.SysAccountRoleExample">
+    <delete id="deleteByExample" parameterType="com.upm.domain.SysAccountRoleExample">
         delete from sys_account_role
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.upm.dao.model.SysAccountRoleKey">
+    <insert id="insert" parameterType="com.upm.domain.SysAccountRoleKey">
         insert into sys_account_role (role_id, account_id)
         values (#{roleId,jdbcType=CHAR}, #{accountId,jdbcType=CHAR})
     </insert>
-    <insert id="insertSelective" parameterType="com.upm.dao.model.SysAccountRoleKey">
+    <insert id="insertSelective" parameterType="com.upm.domain.SysAccountRoleKey">
         insert into sys_account_role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="roleId != null">
@@ -116,7 +116,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.upm.dao.model.SysAccountRoleExample" resultType="java.lang.Long">
+    <select id="countByExample" parameterType="com.upm.domain.SysAccountRoleExample" resultType="java.lang.Long">
         select count(*) from sys_account_role
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>

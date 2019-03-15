@@ -1,4 +1,4 @@
-package com.aaxon.dao.model;
+package com.aaxon.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,14 +7,14 @@ import java.util.List;
 /**
  * @author elviswu
  */
-public class SysMenuExample {
+public class SysRoleExample {
 	protected String orderByClause;
 
 	protected boolean distinct;
 
 	protected List<Criteria> oredCriteria;
 
-	public SysMenuExample() {
+	public SysRoleExample() {
 		oredCriteria = new ArrayList<Criteria>();
 	}
 
@@ -190,146 +190,6 @@ public class SysMenuExample {
 			return (Criteria) this;
 		}
 
-		public Criteria andBpidIsNull() {
-			addCriterion("bpid is null");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidIsNotNull() {
-			addCriterion("bpid is not null");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidEqualTo(String value) {
-			addCriterion("bpid =", value, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidNotEqualTo(String value) {
-			addCriterion("bpid <>", value, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidGreaterThan(String value) {
-			addCriterion("bpid >", value, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidGreaterThanOrEqualTo(String value) {
-			addCriterion("bpid >=", value, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidLessThan(String value) {
-			addCriterion("bpid <", value, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidLessThanOrEqualTo(String value) {
-			addCriterion("bpid <=", value, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidLike(String value) {
-			addCriterion("bpid like", value, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidNotLike(String value) {
-			addCriterion("bpid not like", value, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidIn(List<String> values) {
-			addCriterion("bpid in", values, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidNotIn(List<String> values) {
-			addCriterion("bpid not in", values, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidBetween(String value1, String value2) {
-			addCriterion("bpid between", value1, value2, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andBpidNotBetween(String value1, String value2) {
-			addCriterion("bpid not between", value1, value2, "bpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidIsNull() {
-			addCriterion("mpid is null");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidIsNotNull() {
-			addCriterion("mpid is not null");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidEqualTo(String value) {
-			addCriterion("mpid =", value, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidNotEqualTo(String value) {
-			addCriterion("mpid <>", value, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidGreaterThan(String value) {
-			addCriterion("mpid >", value, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidGreaterThanOrEqualTo(String value) {
-			addCriterion("mpid >=", value, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidLessThan(String value) {
-			addCriterion("mpid <", value, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidLessThanOrEqualTo(String value) {
-			addCriterion("mpid <=", value, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidLike(String value) {
-			addCriterion("mpid like", value, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidNotLike(String value) {
-			addCriterion("mpid not like", value, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidIn(List<String> values) {
-			addCriterion("mpid in", values, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidNotIn(List<String> values) {
-			addCriterion("mpid not in", values, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidBetween(String value1, String value2) {
-			addCriterion("mpid between", value1, value2, "mpid");
-			return (Criteria) this;
-		}
-
-		public Criteria andMpidNotBetween(String value1, String value2) {
-			addCriterion("mpid not between", value1, value2, "mpid");
-			return (Criteria) this;
-		}
-
 		public Criteria andNameIsNull() {
 			addCriterion("name is null");
 			return (Criteria) this;
@@ -400,333 +260,133 @@ public class SysMenuExample {
 			return (Criteria) this;
 		}
 
-		public Criteria andIconIsNull() {
-			addCriterion("icon is null");
+		public Criteria andReamrkIsNull() {
+			addCriterion("reamrk is null");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconIsNotNull() {
-			addCriterion("icon is not null");
+		public Criteria andReamrkIsNotNull() {
+			addCriterion("reamrk is not null");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconEqualTo(String value) {
-			addCriterion("icon =", value, "icon");
+		public Criteria andReamrkEqualTo(String value) {
+			addCriterion("reamrk =", value, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconNotEqualTo(String value) {
-			addCriterion("icon <>", value, "icon");
+		public Criteria andReamrkNotEqualTo(String value) {
+			addCriterion("reamrk <>", value, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconGreaterThan(String value) {
-			addCriterion("icon >", value, "icon");
+		public Criteria andReamrkGreaterThan(String value) {
+			addCriterion("reamrk >", value, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconGreaterThanOrEqualTo(String value) {
-			addCriterion("icon >=", value, "icon");
+		public Criteria andReamrkGreaterThanOrEqualTo(String value) {
+			addCriterion("reamrk >=", value, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconLessThan(String value) {
-			addCriterion("icon <", value, "icon");
+		public Criteria andReamrkLessThan(String value) {
+			addCriterion("reamrk <", value, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconLessThanOrEqualTo(String value) {
-			addCriterion("icon <=", value, "icon");
+		public Criteria andReamrkLessThanOrEqualTo(String value) {
+			addCriterion("reamrk <=", value, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconLike(String value) {
-			addCriterion("icon like", value, "icon");
+		public Criteria andReamrkLike(String value) {
+			addCriterion("reamrk like", value, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconNotLike(String value) {
-			addCriterion("icon not like", value, "icon");
+		public Criteria andReamrkNotLike(String value) {
+			addCriterion("reamrk not like", value, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconIn(List<String> values) {
-			addCriterion("icon in", values, "icon");
+		public Criteria andReamrkIn(List<String> values) {
+			addCriterion("reamrk in", values, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconNotIn(List<String> values) {
-			addCriterion("icon not in", values, "icon");
+		public Criteria andReamrkNotIn(List<String> values) {
+			addCriterion("reamrk not in", values, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconBetween(String value1, String value2) {
-			addCriterion("icon between", value1, value2, "icon");
+		public Criteria andReamrkBetween(String value1, String value2) {
+			addCriterion("reamrk between", value1, value2, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andIconNotBetween(String value1, String value2) {
-			addCriterion("icon not between", value1, value2, "icon");
+		public Criteria andReamrkNotBetween(String value1, String value2) {
+			addCriterion("reamrk not between", value1, value2, "reamrk");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterIsNull() {
-			addCriterion("router is null");
+		public Criteria andIsValidIsNull() {
+			addCriterion("is_valid is null");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterIsNotNull() {
-			addCriterion("router is not null");
+		public Criteria andIsValidIsNotNull() {
+			addCriterion("is_valid is not null");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterEqualTo(String value) {
-			addCriterion("router =", value, "router");
+		public Criteria andIsValidEqualTo(Byte value) {
+			addCriterion("is_valid =", value, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterNotEqualTo(String value) {
-			addCriterion("router <>", value, "router");
+		public Criteria andIsValidNotEqualTo(Byte value) {
+			addCriterion("is_valid <>", value, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterGreaterThan(String value) {
-			addCriterion("router >", value, "router");
+		public Criteria andIsValidGreaterThan(Byte value) {
+			addCriterion("is_valid >", value, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterGreaterThanOrEqualTo(String value) {
-			addCriterion("router >=", value, "router");
+		public Criteria andIsValidGreaterThanOrEqualTo(Byte value) {
+			addCriterion("is_valid >=", value, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterLessThan(String value) {
-			addCriterion("router <", value, "router");
+		public Criteria andIsValidLessThan(Byte value) {
+			addCriterion("is_valid <", value, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterLessThanOrEqualTo(String value) {
-			addCriterion("router <=", value, "router");
+		public Criteria andIsValidLessThanOrEqualTo(Byte value) {
+			addCriterion("is_valid <=", value, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterLike(String value) {
-			addCriterion("router like", value, "router");
+		public Criteria andIsValidIn(List<Byte> values) {
+			addCriterion("is_valid in", values, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterNotLike(String value) {
-			addCriterion("router not like", value, "router");
+		public Criteria andIsValidNotIn(List<Byte> values) {
+			addCriterion("is_valid not in", values, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterIn(List<String> values) {
-			addCriterion("router in", values, "router");
+		public Criteria andIsValidBetween(Byte value1, Byte value2) {
+			addCriterion("is_valid between", value1, value2, "isValid");
 			return (Criteria) this;
 		}
 
-		public Criteria andRouterNotIn(List<String> values) {
-			addCriterion("router not in", values, "router");
-			return (Criteria) this;
-		}
-
-		public Criteria andRouterBetween(String value1, String value2) {
-			addCriterion("router between", value1, value2, "router");
-			return (Criteria) this;
-		}
-
-		public Criteria andRouterNotBetween(String value1, String value2) {
-			addCriterion("router not between", value1, value2, "router");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionIsNull() {
-			addCriterion("permission is null");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionIsNotNull() {
-			addCriterion("permission is not null");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionEqualTo(String value) {
-			addCriterion("permission =", value, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionNotEqualTo(String value) {
-			addCriterion("permission <>", value, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionGreaterThan(String value) {
-			addCriterion("permission >", value, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionGreaterThanOrEqualTo(String value) {
-			addCriterion("permission >=", value, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionLessThan(String value) {
-			addCriterion("permission <", value, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionLessThanOrEqualTo(String value) {
-			addCriterion("permission <=", value, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionLike(String value) {
-			addCriterion("permission like", value, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionNotLike(String value) {
-			addCriterion("permission not like", value, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionIn(List<String> values) {
-			addCriterion("permission in", values, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionNotIn(List<String> values) {
-			addCriterion("permission not in", values, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionBetween(String value1, String value2) {
-			addCriterion("permission between", value1, value2, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andPermissionNotBetween(String value1, String value2) {
-			addCriterion("permission not between", value1, value2, "permission");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceIsNull() {
-			addCriterion("sequence is null");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceIsNotNull() {
-			addCriterion("sequence is not null");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceEqualTo(Byte value) {
-			addCriterion("sequence =", value, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceNotEqualTo(Byte value) {
-			addCriterion("sequence <>", value, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceGreaterThan(Byte value) {
-			addCriterion("sequence >", value, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceGreaterThanOrEqualTo(Byte value) {
-			addCriterion("sequence >=", value, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceLessThan(Byte value) {
-			addCriterion("sequence <", value, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceLessThanOrEqualTo(Byte value) {
-			addCriterion("sequence <=", value, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceIn(List<Byte> values) {
-			addCriterion("sequence in", values, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceNotIn(List<Byte> values) {
-			addCriterion("sequence not in", values, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceBetween(Byte value1, Byte value2) {
-			addCriterion("sequence between", value1, value2, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andSequenceNotBetween(Byte value1, Byte value2) {
-			addCriterion("sequence not between", value1, value2, "sequence");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelIsNull() {
-			addCriterion("menu_level is null");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelIsNotNull() {
-			addCriterion("menu_level is not null");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelEqualTo(Byte value) {
-			addCriterion("menu_level =", value, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelNotEqualTo(Byte value) {
-			addCriterion("menu_level <>", value, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelGreaterThan(Byte value) {
-			addCriterion("menu_level >", value, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelGreaterThanOrEqualTo(Byte value) {
-			addCriterion("menu_level >=", value, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelLessThan(Byte value) {
-			addCriterion("menu_level <", value, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelLessThanOrEqualTo(Byte value) {
-			addCriterion("menu_level <=", value, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelIn(List<Byte> values) {
-			addCriterion("menu_level in", values, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelNotIn(List<Byte> values) {
-			addCriterion("menu_level not in", values, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelBetween(Byte value1, Byte value2) {
-			addCriterion("menu_level between", value1, value2, "menuLevel");
-			return (Criteria) this;
-		}
-
-		public Criteria andMenuLevelNotBetween(Byte value1, Byte value2) {
-			addCriterion("menu_level not between", value1, value2, "menuLevel");
+		public Criteria andIsValidNotBetween(Byte value1, Byte value2) {
+			addCriterion("is_valid not between", value1, value2, "isValid");
 			return (Criteria) this;
 		}
 

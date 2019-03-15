@@ -1,26 +1,20 @@
-package com.aaxon.dao.model;
+package com.aaxon.domain;
 
 import java.util.Date;
 
 /**
  * @author elviswu
  */
-public class SysPermission {
+public class SysRole {
 	private String id;
 
 	private String name;
 
-	private String code;
+	private String reamrk;
 
-	private String parentId;
+	private Byte isValid;
 
-	private Byte permissionLevel;
-
-	private Byte sequence;
-
-	private Byte isResource;
-
-	private String remark;
+	private String helpCode;
 
 	private Date createTime;
 
@@ -46,52 +40,28 @@ public class SysPermission {
 		this.name = name == null ? null : name.trim();
 	}
 
-	public String getCode() {
-		return code;
+	public String getReamrk() {
+		return reamrk;
 	}
 
-	public void setCode(String code) {
-		this.code = code == null ? null : code.trim();
+	public void setReamrk(String reamrk) {
+		this.reamrk = reamrk == null ? null : reamrk.trim();
 	}
 
-	public String getParentId() {
-		return parentId;
+	public Byte getIsValid() {
+		return isValid;
 	}
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId == null ? null : parentId.trim();
+	public void setIsValid(Byte isValid) {
+		this.isValid = isValid;
 	}
 
-	public Byte getPermissionLevel() {
-		return permissionLevel;
+	public String getHelpCode() {
+		return helpCode;
 	}
 
-	public void setPermissionLevel(Byte permissionLevel) {
-		this.permissionLevel = permissionLevel;
-	}
-
-	public Byte getSequence() {
-		return sequence;
-	}
-
-	public void setSequence(Byte sequence) {
-		this.sequence = sequence;
-	}
-
-	public Byte getIsResource() {
-		return isResource;
-	}
-
-	public void setIsResource(Byte isResource) {
-		this.isResource = isResource;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark == null ? null : remark.trim();
+	public void setHelpCode(String helpCode) {
+		this.helpCode = helpCode == null ? null : helpCode.trim();
 	}
 
 	public Date getCreateTime() {

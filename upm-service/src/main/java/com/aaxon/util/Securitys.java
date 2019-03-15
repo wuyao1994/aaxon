@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.shiro.SecurityUtils;
 
-import com.aaxon.dao.model.Menu;
-import com.aaxon.dao.model.ShiroUser;
+import com.aaxon.domain.Menu;
+import com.aaxon.domain.ShiroUser;
 
 /**
  * @author elviswu

@@ -1,4 +1,4 @@
-package com.aaxon.dao.model;
+package com.aaxon.domain;
 
 import java.util.ArrayList;
 import java.util.List;
