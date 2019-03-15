@@ -44,3 +44,13 @@ spring:
     testOnReturn: false
     filters: stat,wall,log4j
     logSlowSql: true
+
+mybatis:
+  mapper-locations: classpath:/mybatis/*Mapper.xml
+
+pagehelper:
+  support-methods-arguments: true
+  params: pageNum=page
+
+loginUsername: admin
+loginPassword: admin
