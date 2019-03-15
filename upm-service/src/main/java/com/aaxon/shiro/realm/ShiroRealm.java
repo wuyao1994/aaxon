@@ -10,7 +10,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import com.aaxon.model.ShiroUser;
+import com.aaxon.dao.model.ShiroUser;
 import com.aaxon.service.UpmApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 

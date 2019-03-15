@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.aaxon.model.SysMenu;
-import com.aaxon.model.SysMenuExample;
+import com.aaxon.dao.model.SysMenu;
+import com.aaxon.dao.model.SysMenuExample;
 
 /**
  * @author elvis

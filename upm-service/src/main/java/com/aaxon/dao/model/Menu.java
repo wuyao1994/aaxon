@@ -1,4 +1,4 @@
-package com.aaxon.model;
+package com.aaxon.dao.model;
 
 import java.io.Serializable;
 

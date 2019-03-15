@@ -1,26 +1,30 @@
-package com.aaxon.model;
+package com.aaxon.dao.model;
 
 import java.util.Date;
 
 /**
  * @author elviswu
  */
-public class SysPermission {
+public class SysMenu {
 	private String id;
+
+	private String bpid;
+
+	private String mpid;
 
 	private String name;
 
-	private String code;
+	private String icon;
 
-	private String parentId;
+	private String router;
 
-	private Byte permissionLevel;
+	private String permission;
 
 	private Byte sequence;
 
-	private Byte isResource;
+	private Byte menuLevel;
 
-	private String remark;
+	private String helpCode;
 
 	private Date createTime;
 
@@ -38,6 +42,22 @@ public class SysPermission {
 		this.id = id == null ? null : id.trim();
 	}
 
+	public String getBpid() {
+		return bpid;
+	}
+
+	public void setBpid(String bpid) {
+		this.bpid = bpid == null ? null : bpid.trim();
+	}
+
+	public String getMpid() {
+		return mpid;
+	}
+
+	public void setMpid(String mpid) {
+		this.mpid = mpid == null ? null : mpid.trim();
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -46,28 +66,28 @@ public class SysPermission {
 		this.name = name == null ? null : name.trim();
 	}
 
-	public String getCode() {
-		return code;
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setCode(String code) {
-		this.code = code == null ? null : code.trim();
+	public void setIcon(String icon) {
+		this.icon = icon == null ? null : icon.trim();
 	}
 
-	public String getParentId() {
-		return parentId;
+	public String getRouter() {
+		return router;
 	}
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId == null ? null : parentId.trim();
+	public void setRouter(String router) {
+		this.router = router == null ? null : router.trim();
 	}
 
-	public Byte getPermissionLevel() {
-		return permissionLevel;
+	public String getPermission() {
+		return permission;
 	}
 
-	public void setPermissionLevel(Byte permissionLevel) {
-		this.permissionLevel = permissionLevel;
+	public void setPermission(String permission) {
+		this.permission = permission == null ? null : permission.trim();
 	}
 
 	public Byte getSequence() {
@@ -78,20 +98,20 @@ public class SysPermission {
 		this.sequence = sequence;
 	}
 
-	public Byte getIsResource() {
-		return isResource;
+	public Byte getMenuLevel() {
+		return menuLevel;
 	}
 
-	public void setIsResource(Byte isResource) {
-		this.isResource = isResource;
+	public void setMenuLevel(Byte menuLevel) {
+		this.menuLevel = menuLevel;
 	}
 
-	public String getRemark() {
-		return remark;
+	public String getHelpCode() {
+		return helpCode;
 	}
 
-	public void setRemark(String remark) {
-		this.remark = remark == null ? null : remark.trim();
+	public void setHelpCode(String helpCode) {
+		this.helpCode = helpCode == null ? null : helpCode.trim();
 	}
 
 	public Date getCreateTime() {

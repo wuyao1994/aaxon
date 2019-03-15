@@ -1,28 +1,18 @@
-package com.aaxon.model;
+package com.aaxon.dao.model;
 
 import java.util.Date;
 
 /**
  * @author elviswu
  */
-public class SysMenu {
+public class SysRole {
 	private String id;
-
-	private String bpid;
-
-	private String mpid;
 
 	private String name;
 
-	private String icon;
+	private String reamrk;
 
-	private String router;
-
-	private String permission;
-
-	private Byte sequence;
-
-	private Byte menuLevel;
+	private Byte isValid;
 
 	private String helpCode;
 
@@ -42,22 +32,6 @@ public class SysMenu {
 		this.id = id == null ? null : id.trim();
 	}
 
-	public String getBpid() {
-		return bpid;
-	}
-
-	public void setBpid(String bpid) {
-		this.bpid = bpid == null ? null : bpid.trim();
-	}
-
-	public String getMpid() {
-		return mpid;
-	}
-
-	public void setMpid(String mpid) {
-		this.mpid = mpid == null ? null : mpid.trim();
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -66,44 +40,20 @@ public class SysMenu {
 		this.name = name == null ? null : name.trim();
 	}
 
-	public String getIcon() {
-		return icon;
+	public String getReamrk() {
+		return reamrk;
 	}
 
-	public void setIcon(String icon) {
-		this.icon = icon == null ? null : icon.trim();
+	public void setReamrk(String reamrk) {
+		this.reamrk = reamrk == null ? null : reamrk.trim();
 	}
 
-	public String getRouter() {
-		return router;
+	public Byte getIsValid() {
+		return isValid;
 	}
 
-	public void setRouter(String router) {
-		this.router = router == null ? null : router.trim();
-	}
-
-	public String getPermission() {
-		return permission;
-	}
-
-	public void setPermission(String permission) {
-		this.permission = permission == null ? null : permission.trim();
-	}
-
-	public Byte getSequence() {
-		return sequence;
-	}
-
-	public void setSequence(Byte sequence) {
-		this.sequence = sequence;
-	}
-
-	public Byte getMenuLevel() {
-		return menuLevel;
-	}
-
-	public void setMenuLevel(Byte menuLevel) {
-		this.menuLevel = menuLevel;
+	public void setIsValid(Byte isValid) {
+		this.isValid = isValid;
 	}
 
 	public String getHelpCode() {

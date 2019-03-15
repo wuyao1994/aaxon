@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.aaxon.model.SysRole;
-import com.aaxon.model.SysRoleExample;
+import com.aaxon.dao.model.SysRole;
+import com.aaxon.dao.model.SysRoleExample;
 
 /**
  * @author elviswu
