@@ -53,7 +53,7 @@ const App = ({
     <div>
       <Spin size="large" className={styles.spin} spinning={loading.effects['app/query']} />
       <Helmet>
-        <title>aaron</title>
+        <title>aaxon</title>
       </Helmet>
 
       <Layout>
