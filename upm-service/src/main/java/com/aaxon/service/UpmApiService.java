@@ -11,13 +11,9 @@ import com.aaxon.domain.ShiroUser;
 /**
  * @author elviswu
  */
-@FeignClient("UPM-SERVICE")
 public interface UpmApiService {
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	ShiroUser login(@RequestParam("username") String username,
-			@RequestParam("password") String password);
+	ShiroUser login(String username, String password);
 
-	@RequestMapping(value = "/set-user-info", method = RequestMethod.GET)
-	void setShiroUserExtraInfo(@RequestBody ShiroUser shiroUser);
+	void setShiroUserExtraInfo(ShiroUser shiroUser);
 }

@@ -11,8 +11,6 @@ import com.aaxon.domain.SysAccount;
  * SysAccountService interface
  * @author elviswu
  */
-@FeignClient("UPM-SERVICE")
 public interface SysAccountService {
-	@RequestMapping("/select-account")
 	List<SysAccount> selectAccountsByUsername(String username);
 }

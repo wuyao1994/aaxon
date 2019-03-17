@@ -8,10 +8,13 @@ import com.aaxon.dao.SysAccountMapper;
 import com.aaxon.domain.SysAccount;
 import com.aaxon.domain.SysAccountExample;
 import com.aaxon.service.SysAccountService;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @author elviswu
  */
+@Service
 public class SysAccountServiceImpl implements SysAccountService {
 	@Autowired
 	private SysAccountMapper sysAccountMapper;

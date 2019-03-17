@@ -17,10 +17,13 @@ import com.aaxon.dao.SysRolePermissionMapper;
 import com.aaxon.domain.*;
 import com.aaxon.service.UpmApiService;
 import com.aaxon.util.PasswordUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @author elvis
  */
+@Service
 public class UpmApiServiceImpl implements UpmApiService {
 	@Autowired
 	private SysAccountMapper sysAccountMapper;

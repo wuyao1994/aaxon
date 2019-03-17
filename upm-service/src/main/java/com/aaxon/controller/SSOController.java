@@ -5,10 +5,7 @@ import static org.apache.shiro.SecurityUtils.getSubject;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.aaxon.domain.ShiroUser;
 import com.aaxon.service.UpmApiService;
@@ -18,12 +15,11 @@ import com.google.common.collect.Maps;
  * @author elviswu
  */
 @RestController
-@RequestMapping("/user")
 public class SSOController {
 	@Autowired
 	private UpmApiService mUpmApiService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@GetMapping("/user")
 	public Map<String, Object> user() {
 		Map<String, Object> res = Maps.newHashMap();
 		if (getSubject().isAuthenticated() || getSubject().isRemembered()) {
@@ -41,7 +37,7 @@ public class SSOController {
 
 	}
 
-	@PostMapping("/login")
+	@PostMapping("/user/login")
 	public void login(String username, String password) {
 		mUpmApiService.login(username, password);
 	}
