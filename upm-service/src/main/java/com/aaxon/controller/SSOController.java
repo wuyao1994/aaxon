@@ -19,7 +19,7 @@ public class SSOController {
 	@Autowired
 	private UpmApiService mUpmApiService;
 
-	@GetMapping("/user")
+	@GetMapping("user")
 	public Map<String, Object> user() {
 		Map<String, Object> res = Maps.newHashMap();
 		if (getSubject().isAuthenticated() || getSubject().isRemembered()) {

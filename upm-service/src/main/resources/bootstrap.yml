@@ -1,5 +1,8 @@
 server:
   port: 8081
+  tomcat:
+    protocol_header: x-forwarded-proto
+  use-forward-headers: true
 spring:
   application:
     name: upm-service
