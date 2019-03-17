@@ -64,7 +64,6 @@ aaxon
 | ------------- | ----- |
 | spring boot | [http://projects.spring.io/spring-boot/](http://projects.spring.io/spring-boot/ "http://projects.spring.io/spring-boot/") |
 | spring cloud | [http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/ "http://projects.spring.io/spring-cloud/") |
-| dubbo | [https://github.com/apache/incubator-dubbo](https://github.com/apache/incubator-dubbo/ "https://github.com/apache/incubator-dubbo/") |
 ## 环境搭建
 Mysql5.7+  
 Zookeeper  
@@ -76,7 +75,7 @@ Redis
 **推荐使用IntelliJ IDEA**，本地编译并安装到本地maven仓库  
 克隆项目文件:
 ```bash
-git clone https://github.com/wuyao1994/aaron.git
+git clone https://github.com/wuyao1994/aaxon.git
 ```
 
 #### 安装依赖  
@@ -106,8 +105,7 @@ npm run dev
 ```
 后台
 ```bash
-直接运行 com.upms.rpc.service.UpmsRpcServiceApplication和com.upms.server.UpmsServerApplication main()方法启动后台服务
-启动顺序，先启动upm-rpc-service,再启动upm-server
+run Application.java 
 ```
 #### 访问
 ```bash
@@ -120,7 +118,7 @@ npm run dev
      server{
                 listen       80;
                 server_name localhost;
-                 root  /home/xxx/workspace/aaron/aaron-static/dist;
+                 root  /home/xxx/workspace/aaxon/aaxon-static/dist;
                  gzip on;
                  gzip_buffers 32 4k;
                  gzip_comp_level 6;
@@ -129,7 +127,7 @@ npm run dev
                  gzip_vary on;
  
                  location /api/v1 {
-                           proxy_pass http://localhost:7000/;
+                           proxy_pass http://localhost:8081/;
                  }
   
                  location / {
@@ -141,8 +139,7 @@ npm run dev
 ```
 后台
 ```bash
-java -jar upms-rpc-service-1.0.0.jar
-java -jar upms-server-1.0.0.jar
+sh run.sh
 ```
 
 
