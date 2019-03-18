@@ -93,26 +93,39 @@ npm i 或者 yarn install
 ```bash
 npm run build
 ```
-后台
+后端
 ```bash
 mvn clean install
 ```
-#### 开发  
+#### 本地开发  
 前端
 ```bash
 npm run build:dll #第一次npm run dev时需运行此命令，使开发时编译更快
 npm run dev
 ```
-后台
+后端
 ```bash
-run Application.java 
+step 1.add hosts :
+127.0.0.1 discovery-service
+127.0.0.1 config-service
+127.0.0.1 upm-service
+127.0.0.1 aaxon kafka mysql zookeeper
+step2.启动各个module Application.java, 启动顺序config-service discovery-service hystrix-service upm-service 
 ```
 #### 访问
 ```bash
 打开 http://localhost:8000
 ```
 ## 服务器部署
-前端, 使用nginx代理指向dist目录  
+1. 环境配置  
+Centos7  
+docker  
+maven  
+node  
+JDK1.8  
+nginx
+2. nginx配置  
+静态代理指向dist目录, 反向代理配置为路由端口
 参考配置
 ```bash
      server{
@@ -137,7 +150,7 @@ run Application.java
          }
 
 ```
-后台
+3.docker部署service
 ```bash
 sh run.sh
 ```
