@@ -2,9 +2,9 @@
 [![React](https://img.shields.io/badge/react-^16.2.0-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.0.3-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
 [![dva](https://img.shields.io/badge/dva-^2.1.0-orange.svg?style=flat-square)](https://github.com/dvajs/dva)
-[![dubbo](https://img.shields.io/badge/dubbo-2.5.10-brightgreen.svg)]()
+[![spring boot](https://img.shields.io/badge/spring%20boot-2.0.6.RELEASE-brightgreen.svg?style=flat-square)](https://github.com/spring-projects/spring-boot)
+[![spring cloud](https://img.shields.io/badge/spring%20cloud-Finchley.SR2-green.svg?style=flat-square)](https://github.com/spring-cloud)
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-
 ## 项目介绍
 Spring Cloud reference application for building an site as microservices  
 演示地址 <https://tainfu.club>
@@ -12,7 +12,7 @@ Spring Cloud reference application for building an site as microservices
 
 ```bash
 aaxon
-├── aaxon-static
+├── aaxon-static          -- 前端静态代码
 |    ├── /dist/           # 项目输出目录
 |    ├── /src/            # 项目源码目录
 │    |     ├── /public/       # 公共文件，编译时copy至dist目录
@@ -39,13 +39,10 @@ aaxon
 |    ├── theme.config.js  #theme配置        
 |    ├── .roadhogrc.mock.js #mock        
 |    └── .roadhogrc.js    # roadhog配置
-├── common -- SSM框架公共模块
-└── upms -- 用户权限管理系统
-     ├── upms-common -- upms系统公共模块
-     ├── upms-dao -- 代码生成模块，无需开发
-     ├── upms-rpc-api -- rpc接口包
-     ├── upms-rpc-service -- rpc服务提供者
-     └── upms-server -- 用户权限系统及SSO服务端
+└── upm-service -- 用户权限管理服务
+└── config-service -- 集中配置中心
+└── discovery-service -- 服务注册中心
+└── hystrix-dashboard -- 服务容错监控中心
 ```
 
 ## 技术选型
