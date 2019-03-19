@@ -14,7 +14,8 @@ const Login = ({
     validateFieldsAndScroll,
   },
 }) => {
-  function handleSubmit () {
+  function handleSubmit (e) {
+    e.preventDefault()
     validateFieldsAndScroll((err, values) => {
       if (err) {
         return
@@ -24,6 +25,7 @@ const Login = ({
         payload: values,
       })
     })
+    return false
   }
 
   return (
