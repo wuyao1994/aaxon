@@ -15,24 +15,25 @@
         </commentGenerator>
 
         <!--  Database Configurations  -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/aaxon" userId="root" password="password" />
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/microservice"
+                        userId="root" password="password"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
         <!--  Model Configurations  -->
-        <javaModelGenerator targetPackage="com.aaxon.domain" targetProject="E:/WorkSpace/Java_workspace/aaxon/upm-service/src/main/java">
+        <javaModelGenerator targetPackage="com.aaxon.domain" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <!--  Mapper Interface Configurations  -->
-        <sqlMapGenerator targetPackage="com.aaxon.dao" targetProject="E:/WorkSpace/Java_workspace/aaxon/upm-service/src/main/java">
+        <!--  Mapper XML Configurations  -->
+        <sqlMapGenerator targetPackage="mybatis" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
 
-        <!--  Mapper XML Configurations  -->
+        <!--  Mapper Interface Configurations  -->
         <javaClientGenerator targetPackage="com.aaxon.dao" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>

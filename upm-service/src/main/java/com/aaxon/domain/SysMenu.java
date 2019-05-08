@@ -2,9 +2,6 @@ package com.aaxon.domain;
 
 import java.util.Date;
 
-/**
- * @author elviswu
- */
 public class SysMenu {
 	private String id;
 

@@ -1,17 +1,10 @@
 package com.aaxon.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
 import com.aaxon.domain.SysMenu;
 import com.aaxon.domain.SysMenuExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-/**
- * @author elvis
- */
-@Mapper
 public interface SysMenuMapper {
 	long countByExample(SysMenuExample example);
 
