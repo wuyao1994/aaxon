@@ -7,6 +7,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aaxon.dao.SysAccountMapper;
 import com.aaxon.dao.SysAccountRoleMapper;
@@ -17,8 +18,6 @@ import com.aaxon.dao.SysRolePermissionMapper;
 import com.aaxon.domain.*;
 import com.aaxon.service.UpmApiService;
 import com.aaxon.util.PasswordUtils;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * @author elvis

@@ -2,10 +2,16 @@ package com.aaxon.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author: ElvisWu
@@ -28,5 +34,12 @@ public class LogAspect {
 	public void doAfterController(JoinPoint pJoinPoint) {
 		endTime = System.currentTimeMillis();
 		log.info("end at: {}", endTime);
+	}
+
+	@Around("execution(* *..controller..*.*(..))")
+	public Object doAround(ProceedingJoinPoint pProceedingJoinPoint) throws Throwable {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		Object result = pProceedingJoinPoint.proceed();
+		return result;
 	}
 }
