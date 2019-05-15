@@ -1,17 +1,13 @@
 package com.aaxon.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
 import com.aaxon.domain.SysAccount;
 import com.aaxon.domain.SysAccountExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 /**
- * @@author elvis
+ * @author elvis
  */
-@Mapper
 public interface SysAccountMapper {
 	long countByExample(SysAccountExample example);
 

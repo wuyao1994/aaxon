@@ -1,8 +1,5 @@
 package com.aaxon.domain;
 
-/**
- * @author elviswu
- */
 public class SysRolePermissionKey {
 	private String roleId;
 

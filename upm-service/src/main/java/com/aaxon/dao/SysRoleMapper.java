@@ -1,17 +1,10 @@
 package com.aaxon.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
 import com.aaxon.domain.SysRole;
 import com.aaxon.domain.SysRoleExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-/**
- * @author elviswu
- */
-@Mapper
 public interface SysRoleMapper {
 	long countByExample(SysRoleExample example);
 
