@@ -3,8 +3,11 @@ package com.aaxon.dao;
 import com.aaxon.domain.SysPermission;
 import com.aaxon.domain.SysPermissionExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface SysPermissionMapper {
 	long countByExample(SysPermissionExample example);
 

@@ -3,8 +3,11 @@ package com.aaxon.dao;
 import com.aaxon.domain.SysMenu;
 import com.aaxon.domain.SysMenuExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface SysMenuMapper {
 	long countByExample(SysMenuExample example);
 

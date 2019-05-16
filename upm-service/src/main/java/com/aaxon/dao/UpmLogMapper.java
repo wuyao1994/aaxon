@@ -2,11 +2,13 @@ package com.aaxon.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.aaxon.domain.UpmLog;
 import com.aaxon.domain.UpmLogExample;
 
+@Mapper
 public interface UpmLogMapper {
     long countByExample(UpmLogExample example);
 

@@ -3,8 +3,11 @@ package com.aaxon.dao;
 import com.aaxon.domain.SysAccountRoleExample;
 import com.aaxon.domain.SysAccountRoleKey;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface SysAccountRoleMapper {
 	long countByExample(SysAccountRoleExample example);
 
