@@ -63,7 +63,11 @@ aaxon
 | ELK 日志系统 |  |
 ## 环境搭建
 Mysql5.7+  
+kafka
 Zookeeper  
+elasticsearch  
+logstash  
+kibana   
 Node  
 Java1.8  
 Redis  
