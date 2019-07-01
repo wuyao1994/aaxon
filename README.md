@@ -7,7 +7,6 @@
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 ## 项目介绍
 Spring Cloud reference application for building an site as microservices  
-演示地址 <https://tainfu.club>
 ## 组织结构 
 
 ```bash
@@ -61,6 +60,7 @@ aaxon
 | ------------- | ----- |
 | spring boot | [http://projects.spring.io/spring-boot/](http://projects.spring.io/spring-boot/ "http://projects.spring.io/spring-boot/") |
 | spring cloud | [http://projects.spring.io/spring-cloud/](http://projects.spring.io/spring-cloud/ "http://projects.spring.io/spring-cloud/") |
+| ELK 日志系统 |  |
 ## 环境搭建
 Mysql5.7+  
 Zookeeper  
